@@ -1,10 +1,10 @@
-package MoraeTDAT;
+package MoraeTdat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MoraeApplicationTests {
+class MoraeTdatApplicationTests {
 
 	@Test
 	void contextLoads() {
