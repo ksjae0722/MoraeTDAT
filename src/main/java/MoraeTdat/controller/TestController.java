@@ -1,4 +1,4 @@
-package MoraeTdat.Controller;
+package MoraeTdat.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
