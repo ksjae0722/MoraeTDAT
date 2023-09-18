@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 카카오맵 api -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d03f50c58f26a9ff960e6569403c910f&libraries=services,clusterer"></script>
     <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,93 +97,53 @@
         </div>
     </div>
     <!-- 회원가입 폼 -->
-    <div id="cart" class="border rounded-3" style="background-color: #FCFCFC;">
+    <div id="mypage" class="border rounded-3 pb-5" style="background-color: #FCFCFC;">
         <div class="mb-3 mt-5">
-            <p class="text-center h1 mt-5">장바구니</p>
-        </div>
-            <!-- 디비에서 최근 상품 조회 (페이징) -->
-            <div id="cartlist">
-                <form>
-                <div style="margin: 0 80px;" class="mt-5 mb-5">
-                    <div class="border py-3" style="background-color: white;">
-                        <div class="d-flex align-end mt-2">
-                            <a href="" class="ms-auto"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체선택</p></a>
-                            <a href="" class="me-4"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체삭제</p></a>
-                        </div>
-                        <!-- 상품 하나 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 상품 하나 끝 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 페이지네이션 -->
-                            <div id="pagination" class="justify-content-center d-flex mt-5 mb-3">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    
-                    <!-- 금액 표시창 -->
-                    <div class="border py-5 mt-5 d-flex" style="background-color: white;">
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 60px;">전체 금액</p>
-                        <p class="fs-4 my-auto" style="margin-left: 60px;">상품 금액 변수</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">&nbsp;+&nbsp;</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">배송비 변수</p>
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 120px;">변수 원</p>
+            <p class="text-center h1">Contact Us</p>
+            <div class="d-flex justify-content-center mt-5">          
+                <!-- 카카오맵 -->
+                <!-- 1. 지도 노드 -->
+                <div id="daumRoughmapContainer1695005978115" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                <!-- 3. 실행 스크립트 -->
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1695005978115",
+                        "key" : "2g8e4",
+                        "mapWidth" : "500",
+                        "mapHeight" : "400"
+                    }).render();
+                </script>
+                <!-- 카카오맵 api 실패 
+                <div id="map" class="border rounded" style="width:500px;height:400px;"></div>
+                <script type="text/javascript">
+                    let container = $('#map');
+                    let options = { 
+                        center: new kakao.maps.LatLng(34.721921, 127.988031),
+                        level: 3
+                    };
+                    let map = new kakao.maps.Map(container, options);
+                </script>
+                 -->   
+                <div class="border rounded ms-3 p-4" style="width:500; height:400;">
+                    <div class="d-flex justify-content-center mb-3">
+                        <img src="img/logo.png" alt="logo" style="width:300px">
                     </div>
-                    <!-- 금액 표시창 끝 -->
-
-                    <!-- 구매버튼 -->
-                    <div class="mt-5 d-flex justify-content-center">
-                        <button type="button" class="btn btn-lg border rounded" style="width:300px; height: 50px;background-color: #EEEEEE;">구매하기</button>
+                    <div class="p-3 border rounded">
+                        <p class="fs-5 text-center mb-4 fw-bold">모래모레 본점</p>
+                        <p>주소 : 경남 남해군 상주면 상주로 17-4 벤치오피스 2층</p>
+                        <p>연락처 : 055-2021-1009</p>
+                        <p>카카오톡 채널 : MoraeTDAT</p>
+                        <p>인스타그램 : @nyangachi_morae</p>
+                        <p>협업문의/입점문의 : MoraeTDAT@cat.com </p>
                     </div>
-                    <!-- 구매버튼 끝 -->
-                </form>
                 </div>
             </div>
         </div>
     </div>    
     
     <!-- Footer -->
-    <div class="footer" style="position: absolute; top : 1650px; left :335px;">
+    <div class="footer" style="position: absolute; top : 1000px; left :335px;">
         <hr>
         <div class="container d-flex align-items-center mt-5">
             <div class="col">
@@ -208,5 +170,22 @@
         </div>
         <div class="mb-5"></div>
     </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function DaumPostcode() {
+            let addr = '';
+            let zonecode = '';
+
+            new daum.Postcode({
+                oncomplete : function(data) {
+                    addr = data.address;
+                    zonecode = data.zonecode;
+                    $('#address').val(addr);
+                    $('#zonecode').val(zonecode);
+                    $('#detailAddress').focus();
+                }
+            }).open();
+        }
+    </script>
 </body>
 </html>

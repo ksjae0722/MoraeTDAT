@@ -77,13 +77,10 @@
             <div class="col-9 d-flex justify-content-center">
                 <a href="/home"><img src="img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
             </div>
-            <div class="col-1">
-                <!-- 위치 차지 -->
-            </div>
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
                     <img src="img/user.png" alt="userInfo" height="30px" width="30px">
-                    <p style="margin-left: 5px;"><d%=userId%></p>
+                    <p style="margin-left: 5px;"><s%=userId%></p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
@@ -94,92 +91,61 @@
             </div>
         </div>
     </div>
-    <!-- 회원가입 폼 -->
-    <div id="cart" class="border rounded-3" style="background-color: #FCFCFC;">
-        <div class="mb-3 mt-5">
-            <p class="text-center h1 mt-5">장바구니</p>
-        </div>
-            <!-- 디비에서 최근 상품 조회 (페이징) -->
-            <div id="cartlist">
-                <form>
-                <div style="margin: 0 80px;" class="mt-5 mb-5">
-                    <div class="border py-3" style="background-color: white;">
-                        <div class="d-flex align-end mt-2">
-                            <a href="" class="ms-auto"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체선택</p></a>
-                            <a href="" class="me-4"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체삭제</p></a>
+    <!-- 상품 목록 -->
+    <div id="shopdetail">
+        <hr>
+        <p class="h1 fw-bold text-center mb-5" style="margin-top: 80px;">상품 상세페이지</p>
+        <div class="container">
+            <div class="row mt-5 pb-5 border pt-5 justify-content-center px-5">
+                    <!-- 대표사진, 옵션 선택 -->
+                    <div class="d-flex gap-3">
+                        <img src="img/tshirtsskyblue.png" alt="product" class="col border">
+                        <div class="col border">
+                            <form action="">
+                                <div style="margin-top: 100px;">
+                                    <p class="h2 text-center mt-5 mb-5">상품 이름</p>
+                                    <p class="fs-6 text-start mb-0" style="color: gray; padding-left: 70px;">스카이블루, L</p>
+                                    <p class="fs-2" style="padding-left: 70px;">35000원</p>
+                                </div>
+                                <div class="mx-5">
+                                    <select name="product_option" id="product_option" class="form-control" style="margin-left: 23px; width:400px;">
+                                        <option value="">선택하세요</option>
+                                        <option value="s">세계정복티셔츠/스카이블루/S</option>
+                                        <option value="m">세계정복티셔츠/스카이블루/M</option>
+                                        <option value="l">세계정복티셔츠/스카이블루/L</option>
+                                        <option value="xl">세계정복티셔츠/스카이블루/XL</option>
+                                    </select>
+                                </div>
+                                <div class="mx-5 mt-4 d-flex">
+                                    <img src="img/heart.png" alt="like" style="margin-left: 23px; width:50px;" class="border rounded p-2" onClick="">
+                                    <button class="form-control" style="display: inline; margin-left:12px; width:164px">장바구니</button>
+                                    <button class="form-control" style="display: inline; margin-left:12px; width:164px">구매하기</button>
+                                </div>
+                            </form>
                         </div>
-                        <!-- 상품 하나 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 상품 하나 끝 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 페이지네이션 -->
-                            <div id="pagination" class="justify-content-center d-flex mt-5 mb-3">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    
-                    <!-- 금액 표시창 -->
-                    <div class="border py-5 mt-5 d-flex" style="background-color: white;">
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 60px;">전체 금액</p>
-                        <p class="fs-4 my-auto" style="margin-left: 60px;">상품 금액 변수</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">&nbsp;+&nbsp;</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">배송비 변수</p>
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 120px;">변수 원</p>
                     </div>
-                    <!-- 금액 표시창 끝 -->
+                    <!-- 대표사진, 옵션 끝 -->
 
-                    <!-- 구매버튼 -->
-                    <div class="mt-5 d-flex justify-content-center">
-                        <button type="button" class="btn btn-lg border rounded" style="width:300px; height: 50px;background-color: #EEEEEE;">구매하기</button>
+                    <!-- 제품정보(텍스트) -->
+                    <div class="row mt-5 pb-5 border pt-5 justify-content-center px-5 d-flex">
+                        <div class="col border">
+                            <p class="">상품 상세 정보 텍스트 데스네</p>
+                        </div> 
+                        <div class="col border">
+                            <p class="">상품 사이즈 정보 데스네</p>
+                        </div> 
                     </div>
-                    <!-- 구매버튼 끝 -->
-                </form>
+                    <!-- 제품정보(텍스트) 끝 -->
+
+                    <!-- 제품 정보(긴 사진) -->
+                    <div class="row pb-5 pt-5 justify-content-center px-5 d-flex">
+                        <img src="" alt="photo_description">
+                    </div>
+                    <!-- 제품 정보(긴 사진) 끝 -->
                 </div>
-            </div>
+            </div>    
         </div>
-    </div>    
-    
+    </div>
     <!-- Footer -->
     <div class="footer" style="position: absolute; top : 1650px; left :335px;">
         <hr>

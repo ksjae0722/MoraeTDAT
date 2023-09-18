@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,9 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- 카카오페이 필요 js -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +83,7 @@
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
                     <img src="img/user.png" alt="userInfo" height="30px" width="30px">
-                    <p style="margin-left: 5px;"><%=userId%></p>
+                    <p style="margin-left: 5px;"><d%=userId%></p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
@@ -96,71 +95,78 @@
         </div>
     </div>
     <!-- 회원가입 폼 -->
-    <div id="checkout1" class="border rounded-3" style="background-color: #f7f7f7;">
-        <div class="mb-5 mt-5">
-            <p class="text-center h1">주문하기</p>
+    <div id="mypage" class="border rounded-3" style="background-color: #FCFCFC;">
+        <div class="mb-3 mt-5">
+            <p class="text-center h1">마이페이지</p>
+            <div class="d-flex justify-content-center mt-5">
+                <p>계정정보</p>
+                <p>&nbsp;&nbsp;|&nbsp;&nbsp;</p>
+                <p>주문내역</p>
+            </div>
         </div>
-        <!--입력폼-->
-        <form name="signup" class="mb-5" id="fregister" action="/signup" onsubmit="return fregister_submit(this);" method="POST" autocomplete="off">
-            <div class="px-5">
-                <!-- 주문자 정보 -->
-                <div class="border rounded px-5 py-2" style="background-color: white;">
-                    <div class="mt-3 mb-3 d-flex">
-                        <h4 class="text-center mb-0">주문자 정보</h4>
-                        <input type="checkbox" name="orderinfo" id="orderinfo" class="ms-5 me-2">계정정보 불러오기
-                    </div>
-                    <!-- 이름 -->
+        <!--개인정보-->
+        <div>
+            <div id="userInformation" style="padding: 20px 200px; display: none">
+                <!-- 아이디 -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" name="id" id="id"><img src="img/userbk.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" placeholder="  기존아이디" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!-- 비밀번호 -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" name="pw" id="pw"><img src="img/lock.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" placeholder="  ********" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!-- 비밀번호 확인 -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" name="pwCheck" id="pwCheck"><img src="img/check.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" placeholder="  ********" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!-- 휴대폰번호 -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" name="phoneNumber" id="phoneNumber"><img src="img/phone.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" placeholder="  기존전화번호" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!-- 이메일 -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" name="email" id="email"><img src="img/email.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" placeholder="  기존이메일" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!-- 우편번호 -->
+                <div class="container mb-5" style="padding:0;">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" name="id" id="id"><img src="img/userbk.png" style="width: 25px;"></span>
-                        <input type="text" class="form-control" placeholder="  이름" aria-label="name" aria-describedby="basic-addon1">
-                    </div>
-                    <!-- 연락처 -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" name="phoneNumber" id="phoneNumber"><img src="img/phone.png" style="width: 25px;"></span>
-                        <input type="text" class="form-control" placeholder="  연락처" aria-label="phoneNumber" aria-describedby="basic-addon1">
-                    </div>
-                    <!-- 이메일 -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" name="email" id="email"><img src="img/email.png" style="width: 25px;"></span>
-                        <input type="text" class="form-control" placeholder="  이메일" aria-label="email" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1"><img src="img/addr.png" style="width: 25px;"></span>
+                        <div class="form-control">
+                            <input type="text" name="zonecode" id="zonecode" class="form-control" style="width: 70%; display:inline-block">
+                            <button class="form-control mb-2 zbtn" type="button" onclick="DaumPostcode()" id="button-addon2">우편번호 찾기</button>
+                            <input type="text" name="address" id="address" class="form-control mb-2" placeholder="주소">
+                            <input type="text" name="detailAddress" id="detailAddress" class="form-control" placeholder="상세주소">
+                        </div>  
                     </div>
                 </div>
-                <!-- 주문자 정보 끝 -->
-
-                <!-- 배송 정보 -->
-                <div class="border rounded px-5 py-2 mt-5" style="background-color: white;">
-                    <div class="mt-3 mb-3 d-flex">
-                        <h4 class="text-center mb-0">배송 정보</h4>
-                        <input type="checkbox" name="orderinfo" id="orderinfo" class="ms-5 me-2">주문자 정보와 동일
-                    </div>
-                    <!-- 이름 -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" name="id" id="id"><img src="img/userbk.png" style="width: 25px;"></span>
-                        <input type="text" class="form-control" placeholder="  이름" aria-label="name" aria-describedby="basic-addon1">
-                    </div>
-                    <!-- 연락처 -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" name="phoneNumber" id="phoneNumber"><img src="img/phone.png" style="width: 25px;"></span>
-                        <input type="text" class="form-control" placeholder="  연락처" aria-label="phoneNumber" aria-describedby="basic-addon1">
-                    </div>
-                    <!-- 우편번호 -->
-                    <div class="container mb-5" style="padding:0;">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><img src="img/addr.png" style="width: 25px;"></span>
-                            <div class="form-control">
-                                <input type="text" name="zonecode" id="zonecode" class="form-control" style="width: 70%; display:inline-block">
-                                <button class="form-control mb-2 zbtn" type="button" onclick="DaumPostcode()" id="button-addon2">우편번호 찾기</button>
-                                <input type="text" name="address" id="address" class="form-control mb-2" placeholder="주소">
-                                <input type="text" name="detailAddress" id="detailAddress" class="form-control" placeholder="상세주소">
-                            </div>  
+            </div>
+            <!-- 디비에서 최근 3개 조회 (페이징) -->
+            <div id="orderHistory" style="">
+                <div style="margin: 0 80px;" class="mt-5 mb-5">
+                    <div class="border py-3" style="background-color: white;">
+                        <p style="margin-left: 15px;" class="mb-2">주문번호 21414&nbsp;&nbsp;&nbsp;주문날짜 2023-09-17</p>
+                        <div class="d-flex mt-3">
+                            <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
+                            <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
+                            <div class="border d-flex" style="margin-left: 30px; width: 720px;">
+                                <p>제품명</p>
+                                <p>수량,옵션</p>
+                                <p>가격</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <p style="margin-top: 20px; margin-bottom: 5px;">더보기</p>
                         </div>
                     </div>
                 </div>
-                <!-- 배송 정보 끝 -->
-
-                <!-- 주문내역 -->
-                <div style="width: 1100px;" class="mt-5 mb-5">
-                    <div class="border py-3 rounded" style="background-color: white;">
+                <!-- 한개만 일단 코드 -->
+                <div style="margin: 0 80px;" class="mt-5 mb-5">
+                    <div class="border py-3" style="background-color: white;">
                         <p style="margin-left: 15px;" class="mb-2">주문번호 21414&nbsp;&nbsp;&nbsp;주문날짜 2023-09-17</p>
                         <div class="d-flex mt-3">
                             <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
@@ -176,28 +182,49 @@
                         </div>
                     </div>
                 </div>            
-                <!-- 주문내역 끝 -->
-
-                <!-- 결제 수단 선택 -->
-                <div class="border rounded px-5 py-2 mt-5" style="background-color: white;">
-                    <div class="mt-3 mb-3 d-flex justify-content-center">
-                        <h2 class="text-center mt-3 mb-3">결제 정보</h2>
-                    </div>
-                    <div style="margin-left: 70px;" class="mb-5">
-                        <button type="button" id="credit" class="btn btn-lg border rounded mx-3 my-3" style="width:250px; height: 50px;background-color: #EEEEEE;" onClick="checkout()">신용카드</button>
-                        <button type="button" id="noaccount" class="btn btn-lg border rounded mx-3 my-3" style="width:250px; height: 50px;background-color: #EEEEEE;" onClick="checkout()">무통장입금</button>
-                        <button type="button" id="liveaccount" class="btn btn-lg border rounded mx-3 my-3" style="width:250px; height: 50px;background-color: #EEEEEE;" onClick="checkout()">실시간 계좌이체</button>
-                        <button type="button" id="phonepay" class="btn btn-lg border rounded mx-3 my-3" style="width:250px; height: 50px;background-color: #EEEEEE;" onClick="checkout()">휴대폰결제</button>
-                        <button type="button" id="naverpay" class="btn btn-lg border rounded mx-3 my-3" style="width:250px; height: 50px;background-color: #EEEEEE;" onClick="checkout()">네이버페이</button>
-                        <button type="button" id="kakaopay" class="btn btn-lg border rounded mx-3 my-3" style="width:250px; height: 50px;background-color: #EEEEEE;" onClick="checkout()">카카오페이</button>
+                <div  style="margin: 0 80px;" class="mt-5 mb-5">
+                    <div class="border py-3" style="background-color: white;">
+                        <p style="margin-left: 15px;" class="mb-2">주문번호 21414&nbsp;&nbsp;&nbsp;주문날짜 2023-09-17</p>
+                        <div class="d-flex mt-3">
+                            <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
+                            <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
+                            <div class="border d-flex" style="margin-left: 30px; width: 720px;">
+                                <p>제품명</p>
+                                <p>수량,옵션</p>
+                                <p>가격</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <p style="margin-top: 20px; margin-bottom: 5px;">더보기</p>
+                        </div>
                     </div>
                 </div>
-                <!-- 결제 수단 선택 끝 -->
             </div>
-        </form>
+        </div>
+        <!-- 페이지네이션 -->
+        <div id="pagination" class="justify-content-center d-flex mb-3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                </ul>
+            </nav>
+        </div>
     </div>    
+    
     <!-- Footer -->
-    <div class="footer" style="position: absolute; top : 2000px; left :335px;">
+    <div class="footer" style="position: absolute; top : 1650px; left :335px;">
         <hr>
         <div class="container d-flex align-items-center mt-5">
             <div class="col">
@@ -222,11 +249,9 @@
                 </div>
             </div>
         </div>
-        <div class="mb-5">
-        </div>
+        <div class="mb-5"></div>
     </div>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://spay.kcp.co.kr/plugin/kcp_spay_hub.js"></script>
     <script>
         function DaumPostcode() {
             let addr = '';
@@ -242,11 +267,6 @@
                 }
             }).open();
         }
-
-        function checkout(){
-            alert("결제가 완료되었습니다.");
-            location.href("/home");
-        }
     </script>
 </body>
-</html>
+</html>l>

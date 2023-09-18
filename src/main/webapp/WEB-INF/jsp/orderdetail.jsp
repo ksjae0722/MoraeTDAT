@@ -95,70 +95,65 @@
         </div>
     </div>
     <!-- 회원가입 폼 -->
-    <div id="cart" class="border rounded-3" style="background-color: #FCFCFC;">
+    <div id="mypage" class="border rounded-3" style="background-color: #FCFCFC;">
         <div class="mb-3 mt-5">
-            <p class="text-center h1 mt-5">장바구니</p>
+            <p class="text-center h1">주문상세내역</p>
         </div>
             <!-- 디비에서 최근 상품 조회 (페이징) -->
-            <div id="cartlist">
-                <form>
+            <div id="orderHistory" style="">
                 <div style="margin: 0 80px;" class="mt-5 mb-5">
                     <div class="border py-3" style="background-color: white;">
-                        <div class="d-flex align-end mt-2">
-                            <a href="" class="ms-auto"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체선택</p></a>
-                            <a href="" class="me-4"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체삭제</p></a>
-                        </div>
+                        <p style="margin-left: 15px;" class="mb-2">주문번호 21414&nbsp;&nbsp;&nbsp;주문날짜 2023-09-17</p>
                         <!-- 상품 하나 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 상품 하나 끝 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 페이지네이션 -->
-                            <div id="pagination" class="justify-content-center d-flex mt-5 mb-3">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                    </ul>
-                                </nav>
+                        <div class="d-flex mt-5">
+                            <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
+                            <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
+                            <div class="border d-flex" style="margin-left: 30px; width: 720px;">
+                                <p>제품명</p>
+                                <p>수량,옵션</p>
+                                <p>가격</p>
                             </div>
                         </div>
-                    
+                        <!-- 상품 하나 끝 -->
+                        <div class="d-flex mt-5">
+                            <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
+                            <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
+                            <div class="border d-flex" style="margin-left: 30px; width: 720px;">
+                                <p>제품명</p>
+                                <p>수량,옵션</p>
+                                <p>가격</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5">
+                            <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
+                            <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
+                            <div class="border d-flex" style="margin-left: 30px; width: 720px;">
+                                <p>제품명</p>
+                                <p>수량,옵션</p>
+                                <p>가격</p>
+                            </div>
+                        </div>
+                        <!-- 페이지네이션 -->
+                        <div id="pagination" class="justify-content-center d-flex mt-5 mb-3">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                     <!-- 금액 표시창 -->
                     <div class="border py-5 mt-5 d-flex" style="background-color: white;">
                         <p class="fs-2 fw-bold my-auto" style="margin-left: 60px;">전체 금액</p>
@@ -168,13 +163,6 @@
                         <p class="fs-2 fw-bold my-auto" style="margin-left: 120px;">변수 원</p>
                     </div>
                     <!-- 금액 표시창 끝 -->
-
-                    <!-- 구매버튼 -->
-                    <div class="mt-5 d-flex justify-content-center">
-                        <button type="button" class="btn btn-lg border rounded" style="width:300px; height: 50px;background-color: #EEEEEE;">구매하기</button>
-                    </div>
-                    <!-- 구매버튼 끝 -->
-                </form>
                 </div>
             </div>
         </div>
@@ -208,5 +196,22 @@
         </div>
         <div class="mb-5"></div>
     </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function DaumPostcode() {
+            let addr = '';
+            let zonecode = '';
+
+            new daum.Postcode({
+                oncomplete : function(data) {
+                    addr = data.address;
+                    zonecode = data.zonecode;
+                    $('#address').val(addr);
+                    $('#zonecode').val(zonecode);
+                    $('#detailAddress').focus();
+                }
+            }).open();
+        }
+    </script>
 </body>
 </html>

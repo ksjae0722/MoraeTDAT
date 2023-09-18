@@ -10,8 +10,6 @@
     <!-- 부트스트랩 js, popper js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,94 +92,68 @@
             </div>
         </div>
     </div>
-    <!-- 회원가입 폼 -->
-    <div id="cart" class="border rounded-3" style="background-color: #FCFCFC;">
-        <div class="mb-3 mt-5">
-            <p class="text-center h1 mt-5">장바구니</p>
-        </div>
-            <!-- 디비에서 최근 상품 조회 (페이징) -->
-            <div id="cartlist">
-                <form>
-                <div style="margin: 0 80px;" class="mt-5 mb-5">
-                    <div class="border py-3" style="background-color: white;">
-                        <div class="d-flex align-end mt-2">
-                            <a href="" class="ms-auto"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체선택</p></a>
-                            <a href="" class="me-4"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체삭제</p></a>
-                        </div>
-                        <!-- 상품 하나 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 상품 하나 끝 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 페이지네이션 -->
-                            <div id="pagination" class="justify-content-center d-flex mt-5 mb-3">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    
-                    <!-- 금액 표시창 -->
-                    <div class="border py-5 mt-5 d-flex" style="background-color: white;">
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 60px;">전체 금액</p>
-                        <p class="fs-4 my-auto" style="margin-left: 60px;">상품 금액 변수</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">&nbsp;+&nbsp;</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">배송비 변수</p>
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 120px;">변수 원</p>
-                    </div>
-                    <!-- 금액 표시창 끝 -->
-
-                    <!-- 구매버튼 -->
-                    <div class="mt-5 d-flex justify-content-center">
-                        <button type="button" class="btn btn-lg border rounded" style="width:300px; height: 50px;background-color: #EEEEEE;">구매하기</button>
-                    </div>
-                    <!-- 구매버튼 끝 -->
-                </form>
+    <div id="content" class="mt-3">
+        <!-- 상품 캐러셀 -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/cr-img1.png" class="d-block img-fluid" alt="cr-img1">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/cr-img2.png" class="d-block img-fluid" alt="cr-img2">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/cr-img3.png" class="d-block img-fluid" alt="cr-img3">
                 </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    </div>    
-    
+    </div>
+        <!-- 박스메뉴 -->
+    <div id="content" class="mt-3" style="top: 780px; width: 1400px;">
+        <div class="d-flex justify-content-center mt-5">
+            <div id="best" class="boxmenu">
+                <a href="/category=best">
+                    <img src="img/best_item.png" class="img-fluid">
+                </a>
+            </div>
+            <div id="new" class="boxmenu" style="margin: 0 100px;">
+                <a href="/category=new">
+                    <img src="img/new_product.png" class="img-fluid">
+                </a>
+            </div>
+            <div id="sale" class="boxmenu" style="margin-right: 100px;">
+                <a href="/category=sale">
+                    <img src="img/sale_item.png" class="img-fluid">
+                </a>
+            </div>
+            <div id="preorder" class="boxmenu" >
+                <a href="/category=preorder">
+                    <img src="img/preorder.png" class="img-fluid">
+                </a>
+            </div>
+        </div>
+        <!-- About모래 -->
+        <div class="mt-5">
+            <a href="/morae">
+                <img src="img/about.png">
+            </a>
+        </div>
+    </div>
     <!-- Footer -->
-    <div class="footer" style="position: absolute; top : 1650px; left :335px;">
+    <div class="footer" style="position: absolute; top : 1600px; left :335px;">
         <hr>
         <div class="container d-flex align-items-center mt-5">
             <div class="col">

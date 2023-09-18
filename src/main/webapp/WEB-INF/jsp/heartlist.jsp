@@ -83,7 +83,7 @@
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
                     <img src="img/user.png" alt="userInfo" height="30px" width="30px">
-                    <p style="margin-left: 5px;"><d%=userId%></p>
+                    <p style="margin-left: 5px;"><s%=userId%></p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
@@ -170,8 +170,9 @@
                     <!-- 금액 표시창 끝 -->
 
                     <!-- 구매버튼 -->
-                    <div class="mt-5 d-flex justify-content-center">
-                        <button type="button" class="btn btn-lg border rounded" style="width:300px; height: 50px;background-color: #EEEEEE;">구매하기</button>
+                    <div class="mt-5 d-flex justify-content-center gap-5">
+                        <button type="button" class="btn btn-lg border rounded" style="width:250px; height: 50px;background-color: #EEEEEE;">장바구니</button>
+                        <button type="button" class="btn btn-lg border rounded" style="width:250px; height: 50px;background-color: #EEEEEE;">구매하기</button>
                     </div>
                     <!-- 구매버튼 끝 -->
                 </form>
