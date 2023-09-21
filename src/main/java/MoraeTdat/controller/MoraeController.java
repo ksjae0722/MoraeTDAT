@@ -24,7 +24,7 @@ public class MoraeController {
 	//메인 화면
 	@RequestMapping("/home")
 	public String main() {
-		
+		moraeService.getProducts();
 		return "home";
 	}
 	
@@ -103,5 +103,13 @@ public class MoraeController {
 		
 		return "heartlist";
 	}
+	
+	//찜 목록 화면
+	@RequestMapping("/aboutMorae")
+	public String aboutMorae() {
+		
+		return "AboutMorae";
+	}
+	
 	
 }

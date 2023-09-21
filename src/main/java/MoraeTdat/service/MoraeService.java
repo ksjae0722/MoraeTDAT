@@ -1,5 +1,11 @@
 package MoraeTdat.service;
 
-public class MoraeService {
+import org.springframework.stereotype.Component;
 
+@Component
+public class MoraeService {
+	
+	public void getProducts() {
+		System.out.println("test");
+	}
 }
