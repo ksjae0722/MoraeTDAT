@@ -1,4 +1,4 @@
-package MoraeTdat.service;
+package MoraeTdat.Service;
 
 import org.springframework.stereotype.Component;
 

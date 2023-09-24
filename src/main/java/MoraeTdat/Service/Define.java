@@ -1,4 +1,4 @@
-package MoraeTdat.service;
+package MoraeTdat.Service;
 
 public class Define {
 	public static final String TSHIRTS = "티셔츠";
