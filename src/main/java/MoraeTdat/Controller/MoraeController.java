@@ -3,6 +3,7 @@ package MoraeTdat.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -22,94 +23,88 @@ public class MoraeController {
 	}
 	
 	//메인 화면
-	@RequestMapping("/home")
+	@GetMapping("/home")
 	public String main() {
-		moraeService.getProducts();
+		//moraeService.getProducts();
 		return "home";
 	}
 	
 	//로그인 화면
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login() {
 		
 		return "login";
 	}
 	
 	//회원가입 화면
-	@RequestMapping("/register")
+	@GetMapping("/register")
 	public String register() {
 		
 		return "signup";
 	}
 	
 	//마이페이지 화면
-	@RequestMapping("/mypage")
+	@GetMapping("/mypage")
 	public String mypage() {
 		
 		return "mypage";
 	}
 	
 	//네비바 메뉴
-	@RequestMapping("/category")
+	@GetMapping("/category")
 	public String category(@RequestParam String gubun,
 						   @SessionAttribute Model m) {
-		String page = "";
-		
-		if(gubun.equals(Define.INQUIRY)) {	
-			page = "inquiry";
-			
-		} else if(gubun.equals(Define.NOTICE)) {
-			page = "notice";
-			
-		}  else if(gubun.equals(Define.CONTACTUS)) {
-			page = "contactus";
-			
-		}  else if(gubun.equals(Define.ABOUTMORAE)) {
-			page = "aboutMorae";
-			
-		} else {
-			page = "shop";
-			
-		}
 		
 		m.addAttribute("gubun",gubun);
-		return page;
+		return "shop";
 	}
 	
 	//상품 상세 화면
-	@RequestMapping("/shopdetail")
+	@GetMapping("/shopdetail")
 	public String shopdetail() {
 		
 		return "shopdetail";
 	}
 	
 	//결제 화면
-	@RequestMapping("/checkout")
+	@GetMapping("/checkout")
 	public String checkout() {
 		
 		return "checkout";
 	}
 	
 	//주문 내역 화면
-	@RequestMapping("/orderdetail")
+	@GetMapping("/orderdetail")
 	public String orderdetail() {
 		
 		return "orderdetail";
 	}
 	
 	//찜 목록 화면
-	@RequestMapping("/heartlist")
+	@GetMapping("/heartlist")
 	public String heartlist() {
 		
 		return "heartlist";
 	}
 	
 	//찜 목록 화면
-	@RequestMapping("/aboutMorae")
+	@GetMapping ("/morae")
 	public String aboutMorae() {
 		
 		return "AboutMorae";
 	}
-	
-	
+
+	//문의사항
+	@GetMapping ("/inquiry")
+	public String inquiry() {
+
+		return "inquiry";
+	}
+
+	//공지사항
+	@GetMapping ("/notice")
+	public String notice() {
+
+		return "notice";
+	}
 }

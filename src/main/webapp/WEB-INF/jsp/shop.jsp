@@ -17,13 +17,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <!-- 네비바 css -->
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <!-- 헤더 css -->
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
     <!-- 전체 css -->
-    <link rel="stylesheet" href="css/whole.css">
+    <link rel="stylesheet" href="/css/whole.css">
     <!-- 홈 css -->
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
     <div id="navbar">
@@ -32,60 +32,60 @@
                 <p class="fw-bold fs-3">Category
             </li>       
             <li class="nav-item">
-            <a class="nav-link" href="/category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="category=tshirts">&raquo; 티셔츠</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="category=living">&raquo; 리빙</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="category=office">&raquo; 오피스</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/category=cute">&raquo; 귀여움</a>
-            </li>
-            <br>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=best">베스트</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=new">신상</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=sale">할인상품</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=preorder">예약판매</a>
+                <a class="nav-link" href="category=cute">&raquo; 귀여움</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link" href="/enquiry">문의사항</a>
+                <a class="nav-link" href="category=best">베스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/notice">공지사항</a>
+                <a class="nav-link" href="category=new">신상</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">ContactUs</a>
+                <a class="nav-link" href="category=sale">할인상품</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="category=preorder">예약판매</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link mb-3" href="/morae">About모래</a>
+                <a class="nav-link" href="inquiry">문의사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notice">공지사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact">ContactUs</a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link mb-3" href="morae">About모래</a>
             </li>
         </ul>
     </div>
     <div id="header" class="container">
         <div class="row">
             <div class="col-9 d-flex justify-content-center">
-                <a href="/home"><img src="img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
+                <a href="home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
             </div>
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
-                    <img src="img/user.png" alt="userInfo" height="30px" width="30px">
+                    <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
                     <p style="margin-left: 5px;"><d%=userId%></p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
-                        <a class="userThing" href="/login"><p>로그인</p></a>
-                        <a class="userThing" href="/register" style="margin-left: 30px;"><p>회원가입</p></a>
+                        <a class="userThing" href="login"><p>로그인</p></a>
+                        <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 <div id="shop_search" class="col-2" style="padding: 0;">
                     <div class="input-group mb-3">
                         <input type="text" id="search_bar" class="form-control" placeholder="  티셔츠" aria-label="Username" aria-describedby="basic-addon1">
-                        <span class="input-group-text" name="id" id="id"><img src="img/search.png" style="width: 25px;"></span>
+                        <span class="input-group-text" name="id" id="id"><img src="/img/search.png" style="width: 25px;"></span>
                     </div>
                 </div>
                 <div class="col-8"></div>
@@ -122,36 +122,36 @@
                     <p class="fs-5 text-center mt-2">세계정복티셔츠</p>
                     <p class="fs-6 text-center">35000원</p>
                     <div class="mb-2 text-end"> 
-                        <img src="img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
-                        <img src="img/heart.png" alt="heart" style="width:30px" onClick="">
+                        <img src="/img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
+                        <img src="/img/heart.png" alt="heart" style="width:30px" onClick="">
                     </div>
                 </div>
                 <!-- 상품 1개 -->
                 <div class="col-3 border border-2 px-3">
-                    <img class="border img-fluid mt-4" src="img/tshirtsteal.png">
+                    <img class="border img-fluid mt-4" src="/img/tshirtsteal.png">
                     <p class="fs-5 text-center mt-2">세계정복티셔츠</p>
                     <p class="fs-6 text-center">35000원</p>
                     <div class="mb-2 text-end"> 
-                        <img src="img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
-                        <img src="img/heart.png" alt="heart" style="width:30px" onClick="">
+                        <img src="/img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
+                        <img src="/img/heart.png" alt="heart" style="width:30px" onClick="">
                     </div>
                 </div>
                 <div class="col-3 border border-2 px-3">
-                    <img class="border img-fluid mt-4" src="img/tshirtsteal.png">
+                    <img class="border img-fluid mt-4" src="/img/tshirtsteal.png">
                     <p class="fs-5 text-center mt-2">세계정복티셔츠</p>
                     <p class="fs-6 text-center">35000원</p>
                     <div class="mb-2 text-end"> 
-                        <img src="img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
-                        <img src="img/heart.png" alt="heart" style="width:30px" onClick="">
+                        <img src="/img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
+                        <img src="/img/heart.png" alt="heart" style="width:30px" onClick="">
                     </div>
                 </div>
                 <div class="col-3 border border-2 px-3">
-                    <img class="border img-fluid mt-4" src="img/tshirtsteal.png">
+                    <img class="border img-fluid mt-4" src="/img/tshirtsteal.png">
                     <p class="fs-5 text-center mt-2">세계정복티셔츠</p>
                     <p class="fs-6 text-center">35000원</p>
                     <div class="mb-2 text-end"> 
-                        <img src="img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
-                        <img src="img/heart.png" alt="heart" style="width:30px" onClick="">
+                        <img src="/img/cart.png" alt="cart" style="width:30px; margin-right: 15px;" onClick="">
+                        <img src="/img/heart.png" alt="heart" style="width:30px" onClick="">
                     </div>
                 </div>
                 <!-- 페이지네이션 -->
@@ -182,7 +182,7 @@
         <hr>
         <div class="container d-flex align-items-center mt-5">
             <div class="col">
-                <img src="img/logo.png" alt="Logo" class="img-fluid">
+                <img src="/img/logo.png" alt="Logo" class="img-fluid">
             </div>
             <div class="col">
                 <div class="container text-start ms-5">
@@ -198,7 +198,7 @@
                     <p><b>고객센터</b><br><br>
                         전화번호 : 055-2021-1009<br>
                         주말, 공휴일은 모래 복지를 위해 운영하지 않습니다.<br>
-                        <img src="img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
+                        <img src="/img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
                     </p>
                 </div>
             </div>

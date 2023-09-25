@@ -4,21 +4,17 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import MoraeTdat.Service.TestService;
 
 @Controller
 public class TestController {
-	@Autowired
-	TestService service;
+
+	//TestService service;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView hello(ModelAndView mav) {
+	//@RequestMapping(value="/", method=RequestMethod.GET)
+	/*public ModelAndView hello(ModelAndView mav) {
 		
 		//service.testQuery();
 		
@@ -31,5 +27,8 @@ public class TestController {
 		mav.addAllObjects(map);
 				
 		return mav;
+
 	}
+
+	 */
 }

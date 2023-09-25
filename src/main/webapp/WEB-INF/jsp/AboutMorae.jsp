@@ -17,13 +17,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <!-- 네비바 css -->
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <!-- 헤더 css -->
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
     <!-- 전체 css -->
-    <link rel="stylesheet" href="css/whole.css">
+    <link rel="stylesheet" href="/css/whole.css">
     <!-- 홈 css -->
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
     <div id="navbar">
@@ -32,60 +32,60 @@
                 <p class="fw-bold fs-3">Category
             </li>       
             <li class="nav-item">
-            <a class="nav-link" href="/category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="category=tshirts">&raquo; 티셔츠</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="category=living">&raquo; 리빙</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="category=office">&raquo; 오피스</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/category=cute">&raquo; 귀여움</a>
-            </li>
-            <br>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=best">베스트</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=new">신상</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=sale">할인상품</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=preorder">예약판매</a>
+                <a class="nav-link" href="category=cute">&raquo; 귀여움</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link" href="/enquiry">문의사항</a>
+                <a class="nav-link" href="category=best">베스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/notice">공지사항</a>
+                <a class="nav-link" href="category=new">신상</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">ContactUs</a>
+                <a class="nav-link" href="category=sale">할인상품</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="category=preorder">예약판매</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link mb-3" href="/morae">About모래</a>
+                <a class="nav-link" href="inquiry">문의사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notice">공지사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact">ContactUs</a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link mb-3" href="morae">About모래</a>
             </li>
         </ul>
     </div>
     <div id="header" class="container mb-5">
         <div class="row">
             <div class="col-9 d-flex justify-content-center">
-                <a href="/home"><img src="img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
+                <a href="home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
             </div>
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
-                    <img src="img/user.png" alt="userInfo" height="30px" width="30px">
-                    <p style="margin-left: 5px;"><d%=userId%></p>
+                    <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
+                    <p style="margin-left: 5px;">userId</p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
-                        <a class="userThing" href="/login"><p>로그인</p></a>
-                        <a class="userThing" href="/register" style="margin-left: 30px;"><p>회원가입</p></a>
+                        <a class="userThing" href="login"><p>로그인</p></a>
+                        <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
                     </div>
                 </div>
             </div>
@@ -95,11 +95,11 @@
         <div class="mb-3 mt-5">
             <p class="text-center h1 mt-5">About 모래</p>
             <div class="d-flex justify-content-center mt-5">
-                <img src="img/morae_introduction.png" alt="모래 소개">
+                <img src="/img/morae_introduction.png" alt="모래 소개">
             </div>
             <a href="https://www.instagram.com/nyangachi_morae/">
                 <div class="d-flex justify-content-center mb-3">
-                    <img src="img/morae_icon.png" alt="모래 얼굴">
+                    <img src="/img/morae_icon.png" alt="모래 얼굴">
                     <h1 class="my-auto">@nyangachi_morae</h1>
                 </div>
             </a>
@@ -110,7 +110,7 @@
         <hr>
         <div class="container d-flex align-items-center mt-5">
             <div class="col">
-                <img src="img/logo.png" alt="Logo" class="img-fluid">
+                <img src="/img/logo.png" alt="Logo" class="img-fluid">
             </div>
             <div class="col">
                 <div class="container text-start ms-5">

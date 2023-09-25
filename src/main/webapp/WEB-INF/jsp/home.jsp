@@ -15,13 +15,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <!-- 네비바 css -->
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <!-- 헤더 css -->
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
     <!-- 전체 css -->
-    <link rel="stylesheet" href="css/whole.css">
+    <link rel="stylesheet" href="/css/whole.css">
     <!-- 홈 css -->
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
     <div id="navbar">
@@ -30,69 +30,69 @@
                 <p class="fw-bold fs-3">Category
             </li>       
             <li class="nav-item">
-            <a class="nav-link" href="/category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="category=tshirts">&raquo; 티셔츠</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="category=living">&raquo; 리빙</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="category=office">&raquo; 오피스</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/category=cute">&raquo; 귀여움</a>
-            </li>
-            <br>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=best">베스트</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=new">신상</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=sale">할인상품</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/category=preorder">예약판매</a>
+                <a class="nav-link" href="category=cute">&raquo; 귀여움</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link" href="/enquiry">문의사항</a>
+                <a class="nav-link" href="category=best">베스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/notice">공지사항</a>
+                <a class="nav-link" href="category=new">신상</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">ContactUs</a>
+                <a class="nav-link" href="category=sale">할인상품</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="category=preorder">예약판매</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link mb-3" href="/morae">About모래</a>
+                <a class="nav-link" href="inquiry">문의사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notice">공지사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact">ContactUs</a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link mb-3" href="morae">About모래</a>
             </li>
         </ul>
     </div>
     <div id="header" class="container">
         <div class="row">
             <div class="col-9 d-flex justify-content-center">
-                <a href="/home"><img src="img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
+                <a href="home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
             </div>
             <div class="col-1">
                 <!-- 위치 차지 -->
             </div>
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
-                    <img src="img/user.png" alt="userInfo" height="30px" width="30px">
-                    <p style="margin-left: 5px;"><d%=userId%></p>
+                    <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
+                    <p style="margin-left: 5px;">userId</p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
-                        <a class="userThing" href="/login"><p>로그인</p></a>
-                        <a class="userThing" href="/register" style="margin-left: 30px;"><p>회원가입</p></a>
+                        <a class="userThing" href="login"><p>로그인</p></a>
+                        <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="content" class="mt-3">
+    <div class="mt-3" id="content">
         <!-- 상품 캐러셀 -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -102,13 +102,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/cr-img1.png" class="d-block img-fluid" alt="cr-img1">
+                    <img src="/img/cr-img1.png" class="d-block img-fluid" alt="cr-img1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/cr-img2.png" class="d-block img-fluid" alt="cr-img2">
+                    <img src="/img/cr-img2.png" class="d-block img-fluid" alt="cr-img2">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/cr-img3.png" class="d-block img-fluid" alt="cr-img3">
+                    <img src="/img/cr-img3.png" class="d-block img-fluid" alt="cr-img3">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -125,30 +125,30 @@
     <div id="content" class="mt-3" style="top: 780px; width: 1400px;">
         <div class="d-flex justify-content-center mt-5">
             <div id="best" class="boxmenu">
-                <a href="/category=best">
-                    <img src="img/best_item.png" class="img-fluid">
+                <a href="category=best">
+                    <img src="/img/best_item.png" class="img-fluid">
                 </a>
             </div>
             <div id="new" class="boxmenu" style="margin: 0 100px;">
-                <a href="/category=new">
-                    <img src="img/new_product.png" class="img-fluid">
+                <a href="category=new">
+                    <img src="/img/new_product.png" class="img-fluid">
                 </a>
             </div>
             <div id="sale" class="boxmenu" style="margin-right: 100px;">
-                <a href="/category=sale">
-                    <img src="img/sale_item.png" class="img-fluid">
+                <a href="category=sale">
+                    <img src="/img/sale_item.png" class="img-fluid">
                 </a>
             </div>
             <div id="preorder" class="boxmenu" >
-                <a href="/category=preorder">
-                    <img src="img/preorder.png" class="img-fluid">
+                <a href="category=preorder">
+                    <img src="/img/preorder.png" class="img-fluid">
                 </a>
             </div>
         </div>
         <!-- About모래 -->
         <div class="mt-5">
-            <a href="/morae">
-                <img src="img/about.png">
+            <a href="morae">
+                <img src="/img/about.png">
             </a>
         </div>
     </div>
@@ -157,7 +157,7 @@
         <hr>
         <div class="container d-flex align-items-center mt-5">
             <div class="col">
-                <img src="img/logo.png" alt="Logo" class="img-fluid">
+                <img src="/img/logo.png" alt="Logo" class="img-fluid">
             </div>
             <div class="col">
                 <div class="container text-start ms-5">
@@ -173,7 +173,7 @@
                     <p><b>고객센터</b><br><br>
                         전화번호 : 055-2021-1009<br>
                         주말, 공휴일은 모래 복지를 위해 운영하지 않습니다.<br>
-                        <img src="img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
+                        <img src="/img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
                     </p>
                 </div>
             </div>

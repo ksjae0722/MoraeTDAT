@@ -1,11 +1,8 @@
 package MoraeTdat.Service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class MoraeService {
-	
-	public void getProducts() {
-		System.out.println("test");
-	}
+
 }
