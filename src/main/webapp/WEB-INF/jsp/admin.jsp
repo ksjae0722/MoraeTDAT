@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,59 +19,43 @@
     <link rel="stylesheet" type="text/css" href="/css/header.css">
     <!-- 전체 css -->
     <link rel="stylesheet" type="text/css" href="/css/whole.css">
-    <link rel="stylesheet" type="text/css" href="/css/board.css">
 
     <title>MoraeTDAT</title>
 </head>
 <body>
-<script type="text/javascript">
-    window.onload = () => {
-        let showID = '${sessionScope.loginID}';
-
-        if(showID === "" || showID === 'null'){
-            $('#showUserId').text("비회원");
-            $('#login').show();
-        } else {
-            $('#showUserId').text(showID);
-            $('#login').hide();
-            $('#logout').show();
-        }
-    }
-</script>
-<!-- 네비바 -->
 <div id="navbar">
     <ul id="navbar_list" class="nav flex-column pt-2 mt-5 ms-3">
         <li class="nav-item">
             <p class="fw-bold fs-3">Category
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="shop?category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="category=tshirts">&raquo; 티셔츠</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="shop?category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="category=living">&raquo; 리빙</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="shop?category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="category=office">&raquo; 오피스</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="shop?category=cute">&raquo; 귀여움</a>
-        </li>
-        <br>
-        <li class="nav-item">
-            <a class="nav-link" href="shop?category=best">베스트</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="shop?category=new">신상</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="shop?category=sale">할인상품</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="shop?category=preorder">예약판매</a>
+            <a class="nav-link" href="category=cute">&raquo; 귀여움</a>
         </li>
         <br>
         <li class="nav-item">
-            <a class="nav-link" href="inquiry">문의사항</a>
+            <a class="nav-link" href="category=best">베스트</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="category=new">신상</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="category=sale">할인상품</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="category=preorder">예약판매</a>
+        </li>
+        <br>
+        <li class="nav-item">
+            <a class="nav-link" href="enquiry">문의사항</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="notice">공지사항</a>
@@ -85,7 +69,6 @@
         </li>
     </ul>
 </div>
-<!-- 헤더 -->
 <div id="header" class="container">
     <div class="row">
         <div class="col-8">
@@ -94,7 +77,7 @@
         <div class="col-2 mb-4 p-0" id="userInfo">
             <div class="mt-4 d-flex justify-content-center">
                 <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
-                <p style="margin-left: 5px;" id="showUserId">비회원</p>
+                <p style="margin-left: 5px;">userId</p>
             </div>
             <div>
                 <div class="d-flex  justify-content-center">
@@ -106,59 +89,32 @@
         </div>
     </div>
 </div>
-<!-- 컨텐츠 -->
-<div class="container" id="content" style="margin-top: 50px; background-color: #fcfcfc;">
-    <div id="real_content">
-        <div id="title" class="mt-3 mb-3">
-            <p>문의사항</p>
-        </div>
-        <div id="board" class="mt-3">
-            <div id="column">
-                <div id="col_num">
-                    <p>번호</p>
-                </div>
-                <div id="col_title">
-                    <p>제목</p>
-                </div>
-                <div id="col_id">
-                    <p>아이디</p>
-                </div>
-                <div id="col_date">
-                    <p>게시일</p>
-                </div>
+<div class="container" id="content" style="margin-top: 100px;">
+    <div class="container justify-content-center border w-50" style="height : 350px; margin : auto; background-color: #fcfcfc;">
+        <div style="height : 300px; margin : 25px 0;">
+            <div class="row">
+                <p class="text-center fs-2 mt-2">관리자 페이지</p>
             </div>
-            <div id="row">
-                <div id="row_num">
-                    <p>1</p>
+            <form class="row mt-3" action="/adminlogin" method="post">
+                <div class="col-12 mx-auto mb-2">
+                    <div class="input-group w-50 mx-auto mb-2">
+                        <label class="input-group-text" for="username" style="width : 50px">ID</label>
+                        <input type="text" class="form-control" id="username" name="username"/>
+                    </div>
+                    <div class="input-group w-50 mx-auto mb-2">
+                        <label class="input-group-text" for="password" style="width : 50px">PW</label>
+                        <input type="password" class="form-control" id="password" name="password"/>
+                    </div>
+                    <div class="input-group w-50 mx-auto mt-4">
+                        <button type="submit" class="w-100 btn btn-primary">로그인</button>
+                    </div>
                 </div>
-                <div id="row_title">
-                    <p>제목</p>
-                </div>
-                <div id="row_id">
-                    <p>아이디</p>
-                </div>
-                <div id="row_date">
-                    <p>게시일</p>
-                </div>
-            </div>
-        </div>
-        <div id="paging_container" class="mt-5">
-            <div id="pc_sear_cont">
-                <input type="text" id="search" placeholder="  검색"/>
-            </div>
-            <div id="pc_page_cont">
-                <button>&lt;</button>
-                <p class="my-auto">현재페이지 / 전체페이지</p>
-                <button>&gt;</button>
-            </div>
-            <div id="pc_mon_cont">
-                <button>문의남기기</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
 <!-- 푸터 -->
-<div class="footer" style="position: absolute; top : 900px; left :335px;">
+<div class="footer" style="position: absolute; top : 700px; left :335px;">
     <hr>
     <div class="container d-flex align-items-center mt-5">
         <div class="col">

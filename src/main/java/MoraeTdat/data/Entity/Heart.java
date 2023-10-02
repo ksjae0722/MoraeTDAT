@@ -1,5 +1,9 @@
 package MoraeTdat.data.Entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Heart {
 
     @Id
@@ -23,43 +30,4 @@ public class Heart {
     @Column(nullable = false)
     private String productoption;
 
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public Long getProductnum() {
-        return productnum;
-    }
-
-    public void setProductnum(Long productnum) {
-        this.productnum = productnum;
-    }
-
-    public String getProductname() {
-        return productname;
-    }
-
-    public void setProductname(String productname) {
-        this.productname = productname;
-    }
-
-    public Long getProductprice() {
-        return productprice;
-    }
-
-    public void setProductprice(Long productprice) {
-        this.productprice = productprice;
-    }
-
-    public String getProductoption() {
-        return productoption;
-    }
-
-    public void setProductoption(String productoption) {
-        this.productoption = productoption;
-    }
 }

@@ -3,13 +3,14 @@ package MoraeTdat.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
-import MoraeTdat.Service.Define;
 import MoraeTdat.Service.MoraeService;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/MoraeTDAT")
@@ -21,28 +22,28 @@ public class MoraeController {
 	public MoraeController(MoraeService moraeService) {
 		this.moraeService = moraeService;
 	}
-	
-	//메인 화면
-	@GetMapping("/home")
-	public String main() {
-		//moraeService.getProducts();
-		return "home";
+
+	@RequestMapping(value="/home", method= RequestMethod.GET)
+	public ModelAndView main(ModelAndView mav) {
+		mav.setViewName("/home");
+
+		return mav;
 	}
-	
-	//로그인 화면
-	@GetMapping("/login")
-	public String login() {
-		
-		return "login";
+
+	@RequestMapping(value="/logout", method= RequestMethod.GET)
+	public ModelAndView logout(ModelAndView mav, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+
+		session.invalidate();
+
+		mav.addObject("logout",true);
+		mav.setViewName("/login");
+
+		return mav;
 	}
-	
-	//회원가입 화면
-	@GetMapping("/register")
-	public String register() {
-		
-		return "signup";
-	}
-	
+
+
 	//마이페이지 화면
 	@GetMapping("/mypage")
 	public String mypage() {

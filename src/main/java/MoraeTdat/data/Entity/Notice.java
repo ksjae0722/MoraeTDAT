@@ -1,10 +1,17 @@
 package MoraeTdat.data.Entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Notice {
 
     @Id
@@ -19,36 +26,4 @@ public class Notice {
 
     @Column(nullable = false)
     private String content;
-
-    public int getNoticenum() {
-        return noticenum;
-    }
-
-    public void setNoticenum(int noticenum) {
-        this.noticenum = noticenum;
-    }
-
-    public Date getRegidate() {
-        return regidate;
-    }
-
-    public void setRegidate(Date regidate) {
-        this.regidate = regidate;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

@@ -17,44 +17,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <!-- 네비바 css -->
-    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <!-- 헤더 css -->
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
     <!-- 전체 css -->
-    <link rel="stylesheet" href="/css/whole.css">
+    <link rel="stylesheet" type="text/css" href="/css/whole.css">
     <!-- 홈 css -->
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body>
+<script type="text/javascript">
+    window.onload = () => {
+        let showID = '${sessionScope.loginID}';
+
+        if(showID === "" || showID === 'null'){
+            $('#showUserId').text("비회원");
+            $('#login').show();
+        } else {
+            $('#showUserId').text(showID);
+            $('#login').hide();
+            $('#logout').show();
+        }
+    }
+</script>
     <div id="navbar">
         <ul id="navbar_list" class="nav flex-column pt-2 mt-5 ms-3">
             <li class="nav-item">
                 <p class="fw-bold fs-3">Category
             </li>       
             <li class="nav-item">
-            <a class="nav-link" href="category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="shop?category=tshirts">&raquo; 티셔츠</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="shop?category=living">&raquo; 리빙</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="shop?category=office">&raquo; 오피스</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="category=cute">&raquo; 귀여움</a>
+                <a class="nav-link" href="shop?category=cute">&raquo; 귀여움</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link" href="category=best">베스트</a>
+                <a class="nav-link" href="shop?category=best">베스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="category=new">신상</a>
+                <a class="nav-link" href="shop?category=new">신상</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="category=sale">할인상품</a>
+                <a class="nav-link" href="shop?category=sale">할인상품</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="category=preorder">예약판매</a>
+                <a class="nav-link" href="shop?category=preorder">예약판매</a>
             </li>
             <br>
             <li class="nav-item">
@@ -83,11 +97,12 @@
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
                     <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
-                    <p style="margin-left: 5px;">userId</p>
+                    <p style="margin-left: 5px;" id="showUserId">비회원</p>
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
-                        <a class="userThing" href="login"><p>로그인</p></a>
+                        <a class="userThing" href="login" id="login"><p>로그인</p></a>
+                        <a class="userThing" href="logout" id="logout" style="display: none"><p>로그아웃</p></a>
                         <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
                     </div>
                 </div>
@@ -100,42 +115,50 @@
             <p class="text-center h1">회원가입</p>
         </div>
         <!--입력폼-->
-        <form name="signup" class="mb-5" id="fregister" action="signup" onsubmit="return fregister_submit(this);" method="POST" autocomplete="off">
+        <form name="signup" class="mb-5" id="register" method="POST">
             <div class="px-5">
                 <!-- 아이디 -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" name="id" id="id"><img src="/img/userbk.png" style="width: 25px;"></span>
-                    <input type="text" class="form-control" placeholder="  아이디" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" name="id" ><img src="/img/userbk.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" name="비회원" id="userid" placeholder="  아이디 (영어,숫자 포함 8~25자리)" aria-label="Username" aria-describedby="basic-addon1" required>
+                    <button type="button" class="input-group-text" onclick="testid()" >중복검사</button>
                 </div>
+                <div id="testOK" style="display: none">
+                    <p class="fs-6" style="color:green;">사용가능한 아이디입니다</p>
+                </div>
+                <div id="testNO" style="display:none">
+                    <p class="fs-6" style="color:red;">중복된 아이디입니다</p>
+                </div>
+                <input type="hidden" id="idtestResult">
                 <!-- 비밀번호 -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" name="pw" id="pw"><img src="/img/lock.png" style="width: 25px;"></span>
-                    <input type="password" class="form-control" placeholder="  비밀번호" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" name="pw"><img src="/img/lock.png" style="width: 25px;"></span>
+                    <input type="password" class="form-control" id="userpw" placeholder="  비밀번호 (영어,숫자,특수문자 포함 8~25자리)" aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
                 <!-- 비밀번호 확인 -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" name="pwCheck" id="pwCheck"><img src="/img/check.png" style="width: 25px;"></span>
-                    <input type="password" class="form-control" placeholder="  비밀번호 확인" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" name="pwCheck"><img src="/img/check.png" style="width: 25px;"></span>
+                    <input type="password" class="form-control" id="pwCheck" placeholder="  비밀번호 확인" aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
                 <!-- 휴대폰번호 -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" name="phoneNumber" id="phoneNumber"><img src="/img/phone.png" style="width: 25px;"></span>
-                    <input type="text" class="form-control" placeholder="  전화번호" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" name="phoneNumber"><img src="/img/phone.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" id="userphone" placeholder="  전화번호" aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
                 <!-- 이메일 -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" name="email" id="email"><img src="/img/email.png" style="width: 25px;"></span>
-                    <input type="text" class="form-control" placeholder="  이메일" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" name="email"><img src="/img/email.png" style="width: 25px;"></span>
+                    <input type="text" class="form-control" id="useremail" placeholder="  이메일 (morae@cat.com)" aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
                 <!-- 우편번호 -->
                 <div class="container mb-5" style="padding:0;">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><img src="/img/addr.png" style="width: 25px;"></span>
                         <div class="form-control">
-                            <input type="text" name="zonecode" id="zonecode" class="form-control" style="width: 70%; display:inline-block">
+                            <input type="text" name="userzcode" id="userzcode" class="form-control" style="width: 70%; display:inline-block" required>
                             <button class="form-control mb-2 zbtn" type="button" onclick="DaumPostcode()" id="button-addon2">우편번호 찾기</button>
-                            <input type="text" name="address" id="address" class="form-control mb-2" placeholder="주소">
-                            <input type="text" name="detailAddress" id="detailAddress" class="form-control" placeholder="상세주소">
+                            <input type="text" name="address" id="address" class="form-control mb-2" placeholder="주소" required>
+                            <input type="text" name="detailAddress" id="detailAddress" class="form-control" placeholder="상세주소" required>
                         </div>  
                     </div>
                 </div>
@@ -145,19 +168,19 @@
         <div id="register_agree" style="margin-left: 50px; margin-top: 100px;">
             <h3>약관 동의</h3><br>
             <div>
-                    <p style="margin: 10px 0; ">회원가입약관 및 개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.</p>
-                    <div id="fregister_chkall" class="checks2">
-                        <input type="checkbox" name="chk_all" value="1" id="chk_all">
-                        <label for="chk_all">회원가입 약관에 모두 동의합니다</label>
-                    </div><br>
-                    <section id="fregister_term">
-                        <div class="fregister_agree2 checks2">
-                            <input type="checkbox" name="agree" value="1" id="agree11">
-                            <label for="agree11">
-                                이용약관 동의<span>(필수)</span>
-                            </label>
-                        </div>
-                        <textarea readonly style="width: 700px; height: 200px; resize: none;">
+                <p style="margin: 10px 0; ">회원가입약관 및 개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.</p>
+                <div id="fregister_chkall" class="checks2">
+                    <input type="checkbox" name="chk_all" value="1" id="chk_all">
+                    <label for="chk_all">회원가입 약관에 모두 동의합니다</label>
+                </div><br>
+                <section id="fregister_term">
+                    <div class="fregister_agree2 checks2">
+                        <input type="checkbox" name="agree" value="1" id="agree11">
+                        <label for="agree11">
+                            이용약관 동의<span>(필수)</span>
+                        </label>
+                    </div>
+                    <textarea readonly style="width: 700px; height: 200px; resize: none;">
 제1조(목적) 이 약관은 업체 회사(전자상거래 사업자)가 운영하는 업체 사이버 모래모레(이하 “모래모레”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 모래모레과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
      
       ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
@@ -394,16 +417,16 @@
       ① “모래모레”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
      
       ② “모래모레”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
-                        </textarea>
-                    </section><br>
-                    <section id="fregister_private">
-                        <fieldset class="fregister_agree2 checks2">
-                            <input type="checkbox" name="agree2" value="1" id="agree21">
-                            <label for="agree21">
-                                개인정보 수집 및 이용 동의<span>(필수)</span>
-                            </label>
-                        </fieldset>
-                        <textarea readonly style="width: 700px; height: 200px; resize: none;">
+                    </textarea>
+                </section><br>
+                <section id="fregister_private">
+                    <fieldset class="fregister_agree2 checks2">
+                        <input type="checkbox" name="agree2" value="1" id="agree21">
+                        <label for="agree21">
+                            개인정보 수집 및 이용 동의<span>(필수)</span>
+                        </label>
+                    </fieldset>
+                    <textarea readonly style="width: 700px; height: 200px; resize: none;">
 개인정보처리방침
     
     [차례]
@@ -543,7 +566,7 @@
                         </textarea>
                     </section><br>
                     <div class="btn_confirm mb-5 d-flex justify-content-center">
-                        <input type="submit" class="btn_submit" value="회원가입" id="btn_submit" style="width:230px; height: 40px; border: 1px solid #EEEEEE; font-size: 20px;">
+                        <button type="button" class="btn border btn-lg" onclick="register()" style="background-color: #ebebeb">회원가입</button>
                     </div>
                 </div>
             <script>
@@ -618,11 +641,12 @@
                     addr = data.address;
                     zonecode = data.zonecode;
                     $('#address').val(addr);
-                    $('#zonecode').val(zonecode);
+                    $('#userzcode').val(zonecode);
                     $('#detailAddress').focus();
                 }
             }).open();
         }
     </script>
+    <script type="text/javascript" src="/js/register.js"></script>
 </body>
 </html>

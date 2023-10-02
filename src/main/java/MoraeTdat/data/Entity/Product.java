@@ -1,14 +1,21 @@
 package MoraeTdat.data.Entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productNum;
+    @Column
+    private int productnum;
 
     @Column(nullable = false)
     private String mainphoto;
@@ -17,69 +24,22 @@ public class Product {
     private String detailphoto;
 
     @Column(nullable = false)
-    private String productName;
+    private String productname;
 
     @Column(nullable = false)
-    private Long productprice;
+    private int productprice;
 
     private String productoption;
 
     @Column(nullable = false)
     private String productdetail;
 
-    public Long getProductNum() {
-        return productNum;
-    }
+    @Column(nullable = false)
+    private String category;
 
-    public void setProductNum(Long productNum) {
-        this.productNum = productNum;
-    }
+    @Column(nullable = false)
+    private int panmae;
 
-    public String getMainphoto() {
-        return mainphoto;
-    }
-
-    public void setMainphoto(String mainphoto) {
-        this.mainphoto = mainphoto;
-    }
-
-    public String getDetailphoto() {
-        return detailphoto;
-    }
-
-    public void setDetailphoto(String detailphoto) {
-        this.detailphoto = detailphoto;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Long getProductprice() {
-        return productprice;
-    }
-
-    public void setProductprice(Long productprice) {
-        this.productprice = productprice;
-    }
-
-    public String getProductoption() {
-        return productoption;
-    }
-
-    public void setProductoption(String productoption) {
-        this.productoption = productoption;
-    }
-
-    public String getProductdetail() {
-        return productdetail;
-    }
-
-    public void setProductdetail(String productdetail) {
-        this.productdetail = productdetail;
-    }
+    @Column(nullable = false)
+    private int amount;
 }

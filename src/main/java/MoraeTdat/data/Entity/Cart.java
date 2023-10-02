@@ -1,5 +1,10 @@
 package MoraeTdat.data.Entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +13,11 @@ import java.util.Date;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Cart {
+
     @Id
     private String userid;
 
@@ -21,71 +30,12 @@ public class Cart {
     @Column(nullable = false)
     private Long productprice;
 
-    @Column(nullable = false)
+    @Column
     private String productoption;
-
-
-    @Column(nullable = false)
-    private int deliverfee;
 
     @Column(nullable = false)
     private Date cartdate;
 
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public Long getProductnum() {
-        return productnum;
-    }
-
-    public void setProductnum(Long productnum) {
-        this.productnum = productnum;
-    }
-
-    public String getProductname() {
-        return productname;
-    }
-
-    public void setProductname(String productname) {
-        this.productname = productname;
-    }
-
-    public Long getProductprice() {
-        return productprice;
-    }
-
-    public void setProductprice(Long productprice) {
-        this.productprice = productprice;
-    }
-
-    public String getProductoption() {
-        return productoption;
-    }
-
-    public void setProductoption(String productoption) {
-        this.productoption = productoption;
-    }
-
-    public int getDeliverfee() {
-        return deliverfee;
-    }
-
-    public void setDeliverfee(int deliverfee) {
-        this.deliverfee = deliverfee;
-    }
-
-    public Date getCartdate() {
-        return cartdate;
-    }
-
-    public void setCartdate(Date cartdate) {
-        this.cartdate = cartdate;
-    }
 }
 
 

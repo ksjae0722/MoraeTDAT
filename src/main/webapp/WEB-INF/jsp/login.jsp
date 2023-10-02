@@ -14,44 +14,61 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <!-- 네비바 css -->
-    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <!-- 헤더 css -->
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
     <!-- 전체 css -->
-    <link rel="stylesheet" href="/css/whole.css">
+    <link rel="stylesheet" type="text/css" href="/css/whole.css">
+    <!-- 제이쿼리 -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
     <title>MoraeTDAT</title>
 </head>
 <body>
+<script type="text/javascript">
+    window.onload = () => {
+        let showID = '${sessionScope.loginID}';
+
+        if(showID === "" || showID === 'null'){
+            $('#showUserId').text("비회원");
+            $('#login').show();
+        } else {
+            $('#showUserId').text(showID);
+            $('#login').hide();
+            $('#logout').show();
+        }
+    }
+</script>
+
 <div id="navbar">
     <ul id="navbar_list" class="nav flex-column pt-2 mt-5 ms-3">
         <li class="nav-item">
             <p class="fw-bold fs-3">Category
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="shop?category=tshirts">&raquo; 티셔츠</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="shop?category=living">&raquo; 리빙</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="shop?category=office">&raquo; 오피스</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=cute">&raquo; 귀여움</a>
+            <a class="nav-link" href="shop?category=cute">&raquo; 귀여움</a>
         </li>
         <br>
         <li class="nav-item">
-            <a class="nav-link" href="category=best">베스트</a>
+            <a class="nav-link" href="shop?category=best">베스트</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=new">신상</a>
+            <a class="nav-link" href="shop?category=new">신상</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=sale">할인상품</a>
+            <a class="nav-link" href="shop?category=sale">할인상품</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category=preorder">예약판매</a>
+            <a class="nav-link" href="shop?category=preorder">예약판매</a>
         </li>
         <br>
         <li class="nav-item">
@@ -77,11 +94,12 @@
         <div class="col-2 mb-4 p-0" id="userInfo">
             <div class="mt-4 d-flex justify-content-center">
                 <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
-                <p style="margin-left: 5px;">userId</p>
+                <p style="margin-left: 5px;" id="showUserId">비회원</p>
             </div>
             <div>
                 <div class="d-flex  justify-content-center">
-                    <a class="userThing" href="login"><p>로그인</p></a>
+                    <a class="userThing" href="login" id="login"><p>로그인</p></a>
+                    <a class="userThing" href="logout" id="logout" style="display: none"><p>로그아웃</p></a>
                     <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
                 </div>
             </div>
@@ -94,7 +112,7 @@
             <div class="row">
                 <p class="text-center fs-2">로그인</p>
             </div>
-            <form class="row">
+            <form class="row" method="POST" id="loginform">
                 <div class="col-12 mx-auto mb-2">
                     <div class="input-group w-50 mx-auto mb-2">
                         <label class="input-group-text" for="id" style="width : 50px">ID</label>
@@ -109,7 +127,7 @@
                         <input type="checkbox" class="me-1" id="memory_id" name="memory_id"><label for="memory_id">아이디 저장</label>
                     </div>
                     <div class="input-group w-50 mx-auto">
-                        <button type="button" class="w-100 btn btn-primary">로그인</button>
+                        <button type="button" class="w-100 btn btn-primary" onclick="login();">로그인</button>
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-center mx-auto">
