@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table
@@ -42,4 +43,7 @@ public class Product {
 
     @Column(nullable = false)
     private int amount;
+
+    @Column(nullable = false)
+    private Date regidate;
 }

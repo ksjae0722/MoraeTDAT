@@ -28,11 +28,38 @@ public class ShopService {
     public Product cartinfoBynum(int productnum){
         Product cartinfo = new Product();
 
-        cartinfo = productRepository.cartinfoBynum(productnum);
+        cartinfo = productRepository.getProductBynum(productnum);
         return cartinfo;
     }
 
-    public void addCartByProductnum(int productnum, String productname, int productprice, String userid, Date cartdate){
-        productRepository.addCartByProductnum(productnum, productname, productprice, userid, cartdate);
+    public Product getProductBynum(int productnum){
+        Product cartinfo = new Product();
+
+        cartinfo = productRepository.getProductBynum(productnum);
+        return cartinfo;
+    }
+
+    public void addCartByProductnum(int productnum, String productname, int productprice, String productoption, String userid, int amount){
+        productRepository.addCartByProductnum(productnum, productname, productprice, productoption, userid, amount);
+    }
+
+    public void addCartByProductnumAtList(int productnum, String productname, int productprice, String userid){
+        productRepository.addCartByProductnumAtList(productnum, productname, productprice, userid);
+    }
+
+    public void addHeartByProductnum(int productnum, String productname, int productprice, String userid){
+        productRepository.addHeartByProductnum(productnum, productname, productprice, userid);
+    }
+
+    public List<Product> searchByKeyword(String keyword, String category) {
+        return productRepository.searchByKeyword(keyword,category);
+    }
+
+    public int isExistsProduct(int productnum){
+        return productRepository.isExistsProduct(productnum);
+    }
+
+    public void updateAmount(int amount, int productnum){
+        productRepository.updateAmount(amount,productnum);
     }
 }

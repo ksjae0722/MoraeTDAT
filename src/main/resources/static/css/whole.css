@@ -64,3 +64,11 @@ a {
     text-decoration: none;
     color : black;
 }
+
+#ma, #pl {
+    cursor:pointer;
+}
+
+#gaesu{
+    background-color: white;
+}

@@ -1,5 +1,6 @@
 <%@ page import="MoraeTdat.data.Entity.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -54,50 +55,50 @@
                 <p class="fw-bold fs-3">Category
             </li>       
             <li class="nav-item">
-            <a class="nav-link" href="shop?category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="/MoraeTDAT/shop?category=tshirts">&raquo; 티셔츠</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="shop?category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="/MoraeTDAT/shop?category=living">&raquo; 리빙</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="shop?category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="/MoraeTDAT/shop?category=office">&raquo; 오피스</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="shop?category=cute">&raquo; 귀여움</a>
-            </li>
-            <br>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=best">베스트</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=new">신상</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=sale">할인상품</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=preorder">예약판매</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=cute">&raquo; 귀여움</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link" href="inquiry">문의사항</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=best">베스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="notice">공지사항</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=new">신상</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="contact">ContactUs</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=sale">할인상품</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/MoraeTDAT/shop?category=preorder">예약판매</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link mb-3" href="morae">About모래</a>
+                <a class="nav-link" href="/MoraeTDAT/inquiry">문의사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/MoraeTDAT/notice">공지사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/MoraeTDAT/contact">ContactUs</a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link mb-3" href="/MoraeTDAT/morae">About모래</a>
             </li>
         </ul>
     </div>
     <div id="header" class="container">
         <div class="row">
             <div class="col-9 d-flex justify-content-center">
-                <a href="home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
+                <a href="/MoraeTDAT/home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
             </div>
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
@@ -106,9 +107,13 @@
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
-                        <a class="userThing" href="login" id="login"><p>로그인</p></a>
-                        <a class="userThing" href="logout" id="logout" style="display: none"><p>로그아웃</p></a>
-                        <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
+                        <a class="userThing" href="/MoraeTDAT/login" id="login"><p>로그인</p></a>
+                        <a class="userThing" href="/MoraeTDAT/logout" id="logout" style="display: none"><p>로그아웃</p></a>
+                        <a class="userThing" href="/MoraeTDAT/register" style="margin-left: 30px;"><p>회원가입</p></a>
+                    </div>
+                    <div class="mb-2 text-center">
+                        <a href="/MoraeTDAT/cart"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
+                        <a href="/MoraeTDAT/heart"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
                     </div>
                 </div>
             </div>
@@ -117,13 +122,19 @@
     <!-- 상품 목록 -->
     <div id="shoplist">
         <hr>
-        <p class="h1 fw-bold text-center mb-5" style="margin-top: 80px;">카테고리</p>
+        <%
+            String category = (String)request.getAttribute("category");
+            if(category==null){
+                category="검색결과";
+            }
+        %>
+        <p id="category" class="h1 fw-bold text-center mb-5" style="margin-top: 80px;"><%=category%></p>
         <div class="container" style="margin-top: 100px;">
             <div class="row">
                 <div id="shop_search" class="col-2" style="padding: 0;">
                     <div class="input-group mb-3">
                         <input type="text" id="search_bar" class="form-control" placeholder="  티셔츠" aria-label="Username" aria-describedby="basic-addon1">
-                        <span class="input-group-text" name="id" id="id"><img src="/img/search.png" style="width: 25px;"></span>
+                        <span class="input-group-text" name="id" id="searchbtn" onclick="searchByKeyword('<%=category%>')"><img src="/img/search.png" style="width: 25px;"></span>
                     </div>
                 </div>
                 <div class="col-8"></div>
@@ -138,27 +149,45 @@
                 </div>
             </div>
             <%
-                List<Product> productList = (List<Product>) request.getAttribute("productList");
-
+                List<Product> productList = new ArrayList<>();
+                List<Product> allList = (List<Product>) request.getAttribute("productList");
+                List<Product> resultList = (List<Product>)request.getAttribute("resultList");
+                String pandan = "";
+                if(resultList != null){
+                    productList = resultList;
+                    pandan = "검색결과";
+                } else {
+                    productList = allList;
+                    pandan = "그냥 출력";
+                }
             %>
             <div class="row mt-5 pb-5 gap-5 border pt-5 justify-content-center">
                 <!-- 상품 출력 1-->
                 <%
                     String loginID = (String)session.getAttribute("loginID");
-                    for(Product product : productList){
+
+                    if(productList == null){
                 %>
-                <div class="col-3 border border-2 px-3">
-                    <div class="mt-4 mb-2 text-center">
-                        <img class="border" style="width: 250px; height:265px;" src="<%= product.getMainphoto() %>">
+                    <div id="productC" class="col px-3">
+                        <p class="h3 fw-bold text-center mb-5" style="margin-top: 80px;color:gray;">검색결과가 없습니다.</p>
                     </div>
-                    <p class="fs-5 text-center"><%= product.getProductname() %></p>
-                    <p class="fs-6 text-center"><%= product.getProductprice() %>원</p>
-                    <div class="mb-2 text-end">
-                        <img src="/img/cart.png" class="cart" alt="cart" style="width:30px; margin-right: 15px;" onClick="cart(<%= product.getProductnum() %>,'<%=loginID%>')">
-                        <img src="/img/heart.png" class="heart" alt="heart" style="width:30px" onClick="heart(<%= product.getProductnum() %>,'<%=loginID%>')">
-                    </div>
-                </div>
                 <%
+                    } else {
+                        for(Product product : productList){
+                %>
+                    <div id="productC" class="col-3 border border-2 px-3">
+                        <div class="mt-4 mb-2 text-center">
+                            <a href="/MoraeTDAT/shop/shopdetail?productnum=<%=product.getProductnum()%>"><img class="border" style="width: 250px; height:265px;" src="<%= product.getMainphoto() %>"></a>
+                        </div>
+                        <p class="fs-5 text-center"><%= product.getProductname() %></p>
+                        <p class="fs-6 text-center"><%= product.getProductprice() %>원</p>
+                        <div class="mb-2 text-end">
+                            <img src="/img/cart.png" class="cart" alt="cart" style="width:30px; margin-right: 15px;" onClick="cart(<%= product.getProductnum() %>,'<%=loginID%>')">
+                            <img src="/img/heart.png" class="heart" alt="heart" style="width:30px" onClick="heart(<%= product.getProductnum() %>,'<%=loginID%>')">
+                        </div>
+                    </div>
+                <%
+                        }
                     }
                 %>
             </div>

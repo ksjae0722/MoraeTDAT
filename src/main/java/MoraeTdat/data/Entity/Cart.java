@@ -36,6 +36,9 @@ public class Cart {
     @Column(nullable = false)
     private Date cartdate;
 
+    @Column
+    private int amount;
+
 }
 
 

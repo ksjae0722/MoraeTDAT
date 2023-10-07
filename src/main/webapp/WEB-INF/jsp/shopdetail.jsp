@@ -1,5 +1,7 @@
+<%@ page import="MoraeTdat.data.Entity.Product" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="/css/whole.css">
     <!-- 홈 css -->
     <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <script type="text/javascript" src="/js/shop.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -46,50 +49,50 @@
                 <p class="fw-bold fs-3">Category
             </li>       
             <li class="nav-item">
-            <a class="nav-link" href="shop?category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link" href="/MoraeTDAT/shop?category=tshirts">&raquo; 티셔츠</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="shop?category=living">&raquo; 리빙</a>
+            <a class="nav-link" href="/MoraeTDAT/shop?category=living">&raquo; 리빙</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="shop?category=office">&raquo; 오피스</a>
+            <a class="nav-link" href="/MoraeTDAT/shop?category=office">&raquo; 오피스</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="shop?category=cute">&raquo; 귀여움</a>
-            </li>
-            <br>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=best">베스트</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=new">신상</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=sale">할인상품</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="shop?category=preorder">예약판매</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=cute">&raquo; 귀여움</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link" href="inquiry">문의사항</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=best">베스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="notice">공지사항</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=new">신상</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="contact">ContactUs</a>
+                <a class="nav-link" href="/MoraeTDAT/shop?category=sale">할인상품</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/MoraeTDAT/shop?category=preorder">예약판매</a>
             </li>
             <br>
             <li class="nav-item">
-                <a class="nav-link mb-3" href="morae">About모래</a>
+                <a class="nav-link" href="/MoraeTDAT/inquiry">문의사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/MoraeTDAT/notice">공지사항</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/MoraeTDAT/contact">ContactUs</a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link mb-3" href="/MoraeTDAT/morae">About모래</a>
             </li>
         </ul>
     </div>
     <div id="header" class="container">
         <div class="row">
             <div class="col-9 d-flex justify-content-center">
-                <a href="home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
+                <a href="/MoraeTDAT/home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
             </div>
             <div class="col-2 mb-4 p-0" id="userInfo">
                 <div class="mt-4 d-flex justify-content-center">
@@ -98,15 +101,25 @@
                 </div>
                 <div>
                     <div class="d-flex  justify-content-center">
-                        <a class="userThing" href="login" id="login"><p>로그인</p></a>
-                        <a class="userThing" href="logout" id="logout" style="display: none"><p>로그아웃</p></a>
-                        <a class="userThing" href="register" style="margin-left: 30px;"><p>회원가입</p></a>
+                        <a class="userThing" href="/MoraeTDAT/login" id="login"><p>로그인</p></a>
+                        <a class="userThing" href="/MoraeTDAT/logout" id="logout" style="display: none"><p>로그아웃</p></a>
+                        <a class="userThing" href="/MoraeTDAT/register" style="margin-left: 30px;"><p>회원가입</p></a>
+                    </div>
+                    <div class="mb-2 text-center">
+                        <a href="/MoraeTDAT/cart"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
+                        <a href="/MoraeTDAT/heart"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- 상품 목록 -->
+<%
+    Product product = (Product)request.getAttribute("product");
+    String loginID = (String)session.getAttribute("loginID");
+
+    String[] option = product.getProductoption().split(", ");
+%>
     <div id="shopdetail">
         <hr>
         <p class="h1 fw-bold text-center mb-5" style="margin-top: 80px;">상품 상세페이지</p>
@@ -114,80 +127,56 @@
             <div class="row mt-5 pb-5 border pt-5 justify-content-center px-5">
                     <!-- 대표사진, 옵션 선택 -->
                     <div class="d-flex gap-3">
-                        <img src="/img/tshirtsskyblue.png" alt="product" class="col border">
+                        <img src="<%=product.getMainphoto()%>" alt="product" class="col border img-fluid" style="max-width: 550px">
                         <div class="col border">
-                            <form action="">
-                                <div style="margin-top: 100px;">
-                                    <p class="h2 text-center mt-5 mb-5">상품 이름</p>
-                                    <p class="fs-6 text-start mb-0" style="color: gray; padding-left: 70px;">스카이블루, L</p>
-                                    <p class="fs-2" style="padding-left: 70px;">35000원</p>
-                                </div>
-                                <div class="mx-5">
-                                    <select name="product_option" id="product_option" class="form-control" style="margin-left: 23px; width:400px;">
-                                        <option value="">선택하세요</option>
-                                        <option value="s">세계정복티셔츠/스카이블루/S</option>
-                                        <option value="m">세계정복티셔츠/스카이블루/M</option>
-                                        <option value="l">세계정복티셔츠/스카이블루/L</option>
-                                        <option value="xl">세계정복티셔츠/스카이블루/XL</option>
-                                    </select>
-                                </div>
-                                <div class="mx-5 mt-4 d-flex">
-                                    <img src="/img/heart.png" alt="like" style="margin-left: 23px; width:50px;" class="border rounded p-2" onClick="">
-                                    <button class="form-control" style="display: inline; margin-left:12px; width:164px">장바구니</button>
-                                    <button class="form-control" style="display: inline; margin-left:12px; width:164px">구매하기</button>
-                                </div>
-                            </form>
+                            <div style="margin-top: 100px;">
+                                <p class="h2 text-center mt-5 mb-5"><%=product.getProductname()%></p>
+                                <p class="fs-2" style="padding-left: 70px;"><%=product.getProductprice()%>원</p>
+                            </div>
+                            <div style="padding-left: 70px;">
+                                <nav aria-label="..." >
+                                    <ul class="pagination">
+                                        <li class="page-item disabled" id="ma" onclick="gaesuDown()"><span class="page-link" >-</span></li>
+                                        <li class="page-item" id="1"><span class="page-link" style="color:black" id="gaesu">1</span></li>
+                                        <li class="page-item disabled" id="pl" onclick="gaesuUp()"><span class="page-link">+</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="mx-5">
+                                <select name="product_option" id="product_option" class="form-control" style="margin-left: 23px; width:400px;">
+                                    <%
+                                        for(String opt : option){
+                                     %>
+                                        <option value="<%=opt%>" id="option"><%=opt%></option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                            </div>
+                            <div class="mx-5 mt-4 d-flex">
+                                <img src="/img/heart.png" alt="like" style="margin-left: 23px; width:50px;" class="border rounded p-2" onClick="heart(<%= product.getProductnum() %>,'<%=loginID%>')">
+                                <button class="form-control" style="display: inline; margin-left:12px; width:164px" onclick="cartdetail(<%=product.getProductnum()%>,'<%=loginID%>',$('#product_option').val(),$('#gaesu').text())">장바구니</button>
+                                <button class="form-control" style="display: inline; margin-left:12px; width:164px">구매하기</button>
+                            </div>
                         </div>
                     </div>
                     <!-- 대표사진, 옵션 끝 -->
 
                     <!-- 제품정보(텍스트) -->
                     <div class="row mt-5 pb-5 border pt-5 justify-content-center px-5 d-flex">
-                        <div class="col border">
-                            <p class="">상품 상세 정보 텍스트 데스네</p>
-                        </div> 
-                        <div class="col border">
-                            <p class="">상품 사이즈 정보 데스네</p>
-                        </div> 
+                        <p class=""><%=product.getProductdetail()%></p>
                     </div>
                     <!-- 제품정보(텍스트) 끝 -->
 
                     <!-- 제품 정보(긴 사진) -->
                     <div class="row pb-5 pt-5 justify-content-center px-5 d-flex">
-                        <img src="" alt="photo_description">
+                        <img src="<%=product.getDetailphoto()%>" alt="photo_description">
                     </div>
                     <!-- 제품 정보(긴 사진) 끝 -->
                 </div>
             </div>    
         </div>
-    </div>
     <!-- Footer -->
-    <div class="footer" style="position: absolute; top : 1650px; left :335px;">
-        <hr>
-        <div class="container d-flex align-items-center mt-5">
-            <div class="col">
-                <img src="/img/logo.png" alt="Logo" class="img-fluid">
-            </div>
-            <div class="col">
-                <div class="container text-start ms-5">
-                    <p>&copy; 모래모레 All rights reserved.<br>
-                        주소 : 경남 남해군 상주면 상주로 17-4 벤치오피스 2층<br>
-                        대표 : 강소희 &nbsp;&nbsp;| &nbsp;&nbsp;사업자등록번호 : 2021-1009<br>
-                        제휴협력문의 : raysonkingdom@gmail.com
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container text-start ms-5" >
-                    <p><b>고객센터</b><br><br>
-                        전화번호 : 055-2021-1009<br>
-                        주말, 공휴일은 모래 복지를 위해 운영하지 않습니다.<br>
-                        <img src="/img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="mb-5"></div>
-    </div>
+        <div class="pb-5"></div>
 </body>
 </html>

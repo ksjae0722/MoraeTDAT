@@ -18,6 +18,7 @@ public class Heart {
 
     @Id
     private String userid;
+
     @Column(nullable = false)
     private Long productnum;
 
@@ -26,8 +27,5 @@ public class Heart {
 
     @Column(nullable = false)
     private Long productprice;
-
-    @Column(nullable = false)
-    private String productoption;
 
 }

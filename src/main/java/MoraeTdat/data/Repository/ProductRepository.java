@@ -18,13 +18,34 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<MoraeTdat.data.Entity.Product> shoplistByCategory(String category);
 
     @Query(value ="SELECT * from product where productnum=?", nativeQuery = true)
-    Product cartinfoBynum(int productnum);
+    Product getProductBynum(int productnum);
 
     @Transactional
     @Modifying
-    @Query(value="INSERT INTO cart (productnum, productname, productprice, userid, cartdate) values (:productnum, :productname, :productprice, :userid, :cartdate)", nativeQuery = true)
-    void addCartByProductnum(@Param("productnum") int productnum, @Param("productname") String productname, @Param("productprice") int productprice, @Param("userid") String userid, @Param("cartdate") Date cartdate);
+    @Query(value="INSERT INTO cart (productnum, productname, productprice, productoption, userid, cartdate, amount) values (:productnum, :productname, :productprice, :productoption, :userid, now(), :amount)", nativeQuery = true)
+    void addCartByProductnum(@Param("productnum") int productnum, @Param("productname") String productname, @Param("productprice") int productprice,
+                             @Param("productoption") String productoption, @Param("userid") String userid,@Param("amount") int amount);
+
+    @Transactional
+    @Modifying
+    @Query(value="INSERT INTO cart (productnum, productname, productprice, userid, cartdate, amount) values (:productnum, :productname, :productprice, :userid, now(),amount+1)", nativeQuery = true)
+    void addCartByProductnumAtList(@Param("productnum") int productnum, @Param("productname") String productname, @Param("productprice") int productprice, @Param("userid") String userid);
+
+    @Transactional
+    @Modifying
+    @Query(value="INSERT INTO heart (productnum, productname, productprice, userid) values (:productnum, :productname, :productprice, :userid)", nativeQuery = true)
+    void addHeartByProductnum(@Param("productnum") int productnum, @Param("productname") String productname, @Param("productprice") int productprice, @Param("userid") String userid);
 
 
+    @Query(value="SELECT * FROM product WHERE productname LIKE %?1% AND category = ?2", nativeQuery = true)
+    List<Product> searchByKeyword(String keyword, String category);
+
+    @Query(value = "select count(*) from cart where productnum =?", nativeQuery = true)
+    int isExistsProduct(int productnum);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update cart set amount = amount+?  where productnum =?", nativeQuery = true)
+    void updateAmount(int amount,int productnum);
 
 }
