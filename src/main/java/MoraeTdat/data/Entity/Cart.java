@@ -1,43 +1,48 @@
 package MoraeTdat.data.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Cart {
 
     @Id
-    private String userid;
-
-    @Column(nullable = false)
-    private Long productnum;
+    @Column
+    private int productnum;
 
     @Column(nullable = false)
     private String productname;
 
     @Column(nullable = false)
-    private Long productprice;
+    private int productprice;
 
     @Column
     private String productoption;
 
     @Column(nullable = false)
-    private Date cartdate;
+    private String userid;
+
+    @Column(nullable = false)
+    private LocalDate cartdate;
 
     @Column
     private int amount;
+
+    @Column(nullable = false)
+    private String mainphoto;
 
 }
 

@@ -1,5 +1,8 @@
+<%@ page import="MoraeTdat.data.Entity.Cart" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="/css/whole.css">
     <!-- 홈 css -->
     <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <script type="text/javascript" src="/js/shop.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -31,8 +35,8 @@
         let showID = '${sessionScope.loginID}';
 
         if(showID === "" || showID === 'null'){
-            $('#showUserId').text("비회원");
-            $('#login').show();
+            alert("로그인 후 이용 가능합니다.");
+            window.history.back();
         } else {
             $('#showUserId').text(showID);
             $('#login').hide();
@@ -106,85 +110,65 @@
                         <a class="userThing" href="/MoraeTDAT/register" style="margin-left: 30px;"><p>회원가입</p></a>
                     </div>
                     <div class="mb-2 text-center">
-                        <a href="/MoraeTDAT/cart"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
-                        <a href="/MoraeTDAT/heart"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
+                        <a href="/MoraeTDAT/shop/cartpage"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
+                        <a href="/MoraeTDAT/shop/heartpage"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 회원가입 폼 -->
     <div id="cart" class="border rounded-3" style="background-color: #FCFCFC;">
         <div class="mb-3 mt-5">
             <p class="text-center h1 mt-5">장바구니</p>
         </div>
-            <!-- 디비에서 최근 상품 조회 (페이징) -->
+            <!-- 장바구니 -->
             <div id="cartlist">
-                <form>
                 <div style="margin: 0 80px;" class="mt-5 mb-5">
                     <div class="border py-3" style="background-color: white;">
                         <div class="d-flex align-end mt-2">
-                            <a href="" class="ms-auto"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체선택</p></a>
-                            <a href="" class="me-4"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체삭제</p></a>
+                            <a href="" class="ms-auto" onclick="select_All(event)"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체선택</p></a>
+                            <a href="/MoraeTDAT/shop/cartpage?gubun=all-delete" class="me-4" id="selectDelete" onclick="select_delete(event)"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">전체삭제</p></a>
+                            <a href="" class="me-4" id="partDelete" onclick="part_delete(event)"><p style="margin-left: 15px;" class="mb-2 text-end fs-6">선택삭제</p></a>
                         </div>
+                        <%
+                            List<Cart> cartlist = (ArrayList<Cart>)request.getAttribute("cartlist");
+                            int total_price = 0;
+
+                            for(Cart cart : cartlist){
+                        %>
                         <!-- 상품 하나 -->
                             <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="/img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
+                                <p style="display: none" class="productnum"><%=cart.getProductnum()%></p>
+                                <input type="checkbox" name="historyCheck" class="historyCheck"  style="margin: 0 30px;">
+                                <img src="<%=cart.getMainphoto()%>" alt="product_img" style="width: 180px;">
+                                <div class="border p-4 mx-auto" style="margin-left: 30px; width: 720px;">
+                                    <p class="h3 fw-bold"><%=cart.getProductname()%></p>
+                                    <div class="d-flex pt-2">
+                                        <p class="fs-6 ms-2" style="color:gray">수량 : <%=cart.getAmount()%></p>
+                                        <p class="fs-6 ms-4" style="color:gray">옵션 : <%=cart.getProductoption()%></p>
+                                    </div>
+                                    <p class="h5 ms-2"><%=cart.getProductprice()%></p>
                                 </div>
                             </div>
                             <!-- 상품 하나 끝 -->
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="/img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-5">
-                                <input type="checkbox" name="historyCheck" id="historyCheck" style="margin: 0 30px;">
-                                <img src="/img/sale_item.png" alt="product_img" style="width: 180px;">
-                                <div class="border d-flex" style="margin-left: 30px; width: 720px;">
-                                    <p>제품명</p>
-                                    <p>수량,옵션</p>
-                                    <p>가격</p>
-                                </div>
-                            </div>
-                            <!-- 페이지네이션 -->
-                            <div id="pagination" class="justify-content-center d-flex mt-5 mb-3">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    
+                           <%
+                                   total_price += cart.getProductprice();
+                               }
+                           %>
                     <!-- 금액 표시창 -->
-                    <div class="border py-5 mt-5 d-flex" style="background-color: white;">
+                    <%
+                        int delivery_fee = 0;
+
+                        if(total_price<50000){
+                            delivery_fee = 3000;
+                        }
+                    %>
+                    <div class="border py-5 mt-5 d-flex m-5" style="background-color: white;">
                         <p class="fs-2 fw-bold my-auto" style="margin-left: 60px;">전체 금액</p>
-                        <p class="fs-4 my-auto" style="margin-left: 60px;">상품 금액 변수</p>
+                        <p class="fs-4 my-auto" style="margin-left: 60px;"><%=total_price%></p>
                         <p class="fs-4 my-auto" style="margin-left: 40px;">&nbsp;+&nbsp;</p>
-                        <p class="fs-4 my-auto" style="margin-left: 40px;">배송비 변수</p>
-                        <p class="fs-2 fw-bold my-auto" style="margin-left: 120px;">변수 원</p>
+                        <p class="fs-4 my-auto" style="margin-left: 40px;"><%=delivery_fee%></p>
+                        <p class="fs-2 fw-bold my-auto" style="margin-left: 120px;"><%=total_price + delivery_fee%>원</p>
                     </div>
                     <!-- 금액 표시창 끝 -->
 
@@ -194,38 +178,8 @@
                     </div>
                     <!-- 구매버튼 끝 -->
                 </div>
-                </form>
             </div>
         </div>
-    </div>    
-    
-    <!-- Footer -->
-    <div class="footer" style="position: absolute; top : 1650px; left :335px;">
-        <hr>
-        <div class="container d-flex align-items-center mt-5">
-            <div class="col">
-                <img src="/img/logo.png" alt="Logo" class="img-fluid">
-            </div>
-            <div class="col">
-                <div class="container text-start ms-5">
-                    <p>&copy; 모래모레 All rights reserved.<br>
-                        주소 : 경남 남해군 상주면 상주로 17-4 벤치오피스 2층<br>
-                        대표 : 강소희 &nbsp;&nbsp;| &nbsp;&nbsp;사업자등록번호 : 2021-1009<br>
-                        제휴협력문의 : raysonkingdom@gmail.com
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container text-start ms-5" >
-                    <p><b>고객센터</b><br><br>
-                        전화번호 : 055-2021-1009<br>
-                        주말, 공휴일은 모래 복지를 위해 운영하지 않습니다.<br>
-                        <img src="/img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="mb-5"></div>
     </div>
 </body>
 </html>

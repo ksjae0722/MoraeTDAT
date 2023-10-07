@@ -1,12 +1,13 @@
 package MoraeTdat.Service;
 
+import MoraeTdat.data.Entity.Cart;
+import MoraeTdat.data.Entity.Heart;
 import MoraeTdat.data.Entity.Product;
 import MoraeTdat.data.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -39,27 +40,42 @@ public class ShopService {
         return cartinfo;
     }
 
-    public void addCartByProductnum(int productnum, String productname, int productprice, String productoption, String userid, int amount){
-        productRepository.addCartByProductnum(productnum, productname, productprice, productoption, userid, amount);
+    public void addCartByProductnum(int productnum, String productname, int productprice, String productoption, String userid, int amount, String mainphoto){
+        productRepository.addCartByProductnum(productnum, productname, productprice, productoption, userid, amount, mainphoto);
     }
 
-    public void addCartByProductnumAtList(int productnum, String productname, int productprice, String userid){
-        productRepository.addCartByProductnumAtList(productnum, productname, productprice, userid);
-    }
-
-    public void addHeartByProductnum(int productnum, String productname, int productprice, String userid){
-        productRepository.addHeartByProductnum(productnum, productname, productprice, userid);
+    public void addHeartByProductnum(int productnum, String productname, int productprice, String userid, String mainphoto){
+        productRepository.addHeartByProductnum(productnum, productname, productprice, userid, mainphoto);
     }
 
     public List<Product> searchByKeyword(String keyword, String category) {
         return productRepository.searchByKeyword(keyword,category);
     }
 
+    public List<Product> searchByKeywordB(String keyword) {
+        return productRepository.searchByKeywordB(keyword);
+    }
+
+    public List<Product> searchByKeywordN(String keyword) {
+        return productRepository.searchByKeywordN(keyword);
+    }
+
     public int isExistsProduct(int productnum){
         return productRepository.isExistsProduct(productnum);
     }
 
-    public void updateAmount(int amount, int productnum){
-        productRepository.updateAmount(amount,productnum);
+    public void updateAmount(int amount, String productoption, int productnum){
+        productRepository.updateAmount(amount, productoption, productnum);
     }
+
+    public int checkHeart(int productnum){
+        return productRepository.checkHeart(productnum);
+    }
+
+    public List<Heart> getHeartList(String userid){return productRepository.getHeartList(userid);}
+
+    public List<Product> getBestList(){return productRepository.getBestList();}
+
+    public List<Product> getNewList(){return productRepository.getNewList();}
+
 }

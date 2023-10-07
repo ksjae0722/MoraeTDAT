@@ -101,3 +101,58 @@ function gaesuUp(){
     amount +=1;
     $('#gaesu').text(amount);
 }
+
+function select_All(e){
+    e.preventDefault();
+    $('.historyCheck').prop("checked",true);
+}
+
+function part_delete(e){
+    e.preventDefault();
+    let data = "";
+    $('input:checkbox[name=historyCheck]').each(function (index) {
+        if($(this).is(":checked")==true){
+            data += $(this).prev()[0].innerText+",";
+        }
+    });
+
+    let deleteData = JSON.stringify({"deleteData":data.substring(0,data.length-1)});
+
+    $.ajax({
+        type : 'POST',
+        url: '/MoraeTDAT/shop/cartpage?gubun=part-delete',
+        async : true,
+        dataType:'JSON',
+        contentType: "application/json; charset=UTF-8",
+        data : deleteData,
+        complete : function (){
+            alert("삭제되었습니다");
+            location.reload();
+        }
+    });
+}
+
+function part_deleteH(e){
+    e.preventDefault();
+    let data = "";
+    $('input:checkbox[name=historyCheck]').each(function (index) {
+        if($(this).is(":checked")==true){
+            data += $(this).prev()[0].innerText+",";
+        }
+    });
+
+    let deleteData = JSON.stringify({"deleteData":data.substring(0,data.length-1)});
+
+    $.ajax({
+        type : 'POST',
+        url: '/MoraeTDAT/shop/heartpage?gubun=part-delete',
+        async : true,
+        dataType:'JSON',
+        contentType: "application/json; charset=UTF-8",
+        data : deleteData,
+        complete : function (){
+            alert("삭제되었습니다");
+            location.reload();
+        }
+    });
+}

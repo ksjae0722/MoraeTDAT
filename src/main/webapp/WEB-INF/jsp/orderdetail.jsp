@@ -106,8 +106,8 @@
                         <a class="userThing" href="/MoraeTDAT/register" style="margin-left: 30px;"><p>회원가입</p></a>
                     </div>
                     <div class="mb-2 text-center">
-                        <a href="/MoraeTDAT/cart"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
-                        <a href="/MoraeTDAT/heart"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
+                        <a href="/MoraeTDAT/shop/cartpage"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
+                        <a href="/MoraeTDAT/shop/heartpage"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
                     </div>
                 </div>
             </div>

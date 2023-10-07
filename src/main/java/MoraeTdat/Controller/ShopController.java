@@ -4,13 +4,11 @@ import MoraeTdat.Service.Define;
 import MoraeTdat.Service.ShopService;
 import MoraeTdat.data.Entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -30,23 +28,27 @@ public class ShopController {
         if(category.equals("tshirts")){
             mav.addObject("category",Define.TSHIRTS);
             mav.addObject("productList",shopService.shoplistByCategory(Define.TSHIRTS));
-
         } else if(category.equals("living")){
             mav.addObject("category",Define.LIVING);
             mav.addObject("productList",shopService.shoplistByCategory(Define.LIVING));
-
         } else if(category.equals("office")){
             mav.addObject("category",Define.OFFICE);
             mav.addObject("productList",shopService.shoplistByCategory(Define.OFFICE));
-
         } else if(category.equals("cute")){
             mav.addObject("category",Define.CUTE);
             mav.addObject("productList",shopService.shoplistByCategory(Define.CUTE));
-
         } else if(category.equals("preorder")){
             mav.addObject("category",Define.PREORDER);
             mav.addObject("productList",shopService.shoplistByCategory(Define.PREORDER));
 
+        } else if(category.equals("best")){
+            mav.addObject("category",Define.BEST);
+            mav.addObject("productList",shopService.getBestList());
+        } else if(category.equals("new")){
+            mav.addObject("category",Define.NEW);
+            mav.addObject("productList",shopService.getNewList());
+        } else if(category.equals("sale")){
+            mav.addObject("category",Define.SALE);
         }
 
         mav.setViewName("shop");
@@ -61,17 +63,19 @@ public class ShopController {
         Map<String,Object> addCart = new HashMap<>();
         Product cartinfo = new Product();
         int productnum = (int)cart.get("productnum");
-        System.out.println(shopService.isExistsProduct(productnum));
+
         //등록한 적 있는 물건
         if(shopService.isExistsProduct(productnum)>0){
             String isdetail = (String)cart.get("isdetail");
 
             //상품 상세화면에서 장바구니에 담았을 때
             if(isdetail.equals("done")){
+                String productoption = (String)cart.get("productoption");
                 int amount = Integer.parseInt((String)cart.get("amount"));
-                shopService.updateAmount(Integer.parseInt((String)cart.get("amount")),productnum);
+
+                shopService.updateAmount(Integer.parseInt((String)cart.get("amount")),productoption,productnum);
             } else {
-                shopService.updateAmount(1,productnum);
+                shopService.updateAmount(1,"",productnum);
             }
         //신규로 등록된 물건
         } else {
@@ -81,25 +85,21 @@ public class ShopController {
 
             String productname = cartinfo.getProductname();
             int productprice = cartinfo.getProductprice();
+            String mainphoto = cartinfo.getMainphoto();
+
             String productoption = "";
-            int amount = 0;
+            int amount = 1;
 
             //상품 상세화면에서 장바구니에 담았을 때
             if(isdetail.equals("done")){
                 productoption = (String)cart.get("productoption");
                 amount = Integer.parseInt((String)cart.get("amount"));
 
-                shopService.addCartByProductnum(productnum,productname,productprice,productoption,userid,amount);
+                shopService.addCartByProductnum(productnum,productname,productprice,productoption,userid,amount,mainphoto);
             } else {
-                shopService.addCartByProductnumAtList(productnum,productname,productprice,userid);
+                shopService.addCartByProductnum(productnum,productname,productprice,productoption,userid,amount,mainphoto);
             }
         }
-
-
-
-
-
-
         addCart.put("addcart",true);
 
         return addCart;
@@ -114,12 +114,15 @@ public class ShopController {
         Product heartProduct = new Product();
         int productnum = (int)heart.get("productnum");
 
-        heartProduct = shopService.getProductBynum(productnum);
+        if(shopService.checkHeart(productnum)==0){
+            heartProduct = shopService.getProductBynum(productnum);
 
-        String productname = heartProduct.getProductname();
-        int productprice = heartProduct.getProductprice();
+            String productname = heartProduct.getProductname();
+            int productprice = heartProduct.getProductprice();
+            String mainphoto = heartProduct.getMainphoto();
 
-        shopService.addHeartByProductnum(productnum,productname,productprice,userid);
+            shopService.addHeartByProductnum(productnum,productname,productprice,userid,mainphoto);
+        }
 
         addheart.put("addheart",true);
 
@@ -138,14 +141,21 @@ public class ShopController {
         return mav;
     }
 
-
-
     @RequestMapping(value="/search", method = { RequestMethod.GET, RequestMethod.POST })
-    public ModelAndView category(ModelAndView mav,
+    public ModelAndView search(ModelAndView mav,
                              @RequestParam String keyword,
                              @RequestParam String category){
 
-        List<Product> resultList = shopService.searchByKeyword(keyword,category);
+        List<Product> resultList = new ArrayList<>();
+
+        if(category.equals(Define.BEST)){
+            resultList = shopService.searchByKeywordB(keyword);
+        } else if(category.equals(Define.NEW)){
+            resultList = shopService.searchByKeywordN(keyword);
+        }else {
+            resultList = shopService.searchByKeyword(keyword,category);
+        }
+
 
         mav.addObject("resultList",resultList);
         mav.addObject("search","done");
@@ -153,4 +163,6 @@ public class ShopController {
         mav.setViewName("shop");
         return mav;
     }
+
+
 }

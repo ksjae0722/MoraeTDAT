@@ -95,12 +95,7 @@ public class MoraeController {
 		return "AboutMorae";
 	}
 
-	//문의사항
-	@GetMapping ("/inquiry")
-	public String inquiry() {
 
-		return "inquiry";
-	}
 
 	//공지사항
 	@GetMapping ("/notice")
