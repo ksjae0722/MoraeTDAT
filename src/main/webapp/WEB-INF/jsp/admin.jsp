@@ -29,43 +29,43 @@
             <p class="fw-bold fs-3">Category
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=tshirts">&raquo; 티셔츠</a>
+            <a class="nav-link">&raquo; 티셔츠</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=living">&raquo; 리빙</a>
+            <a class="nav-link">&raquo; 리빙</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=office">&raquo; 오피스</a>
+            <a class="nav-link">&raquo; 오피스</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=cute">&raquo; 귀여움</a>
-        </li>
-        <br>
-        <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=best">베스트</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=new">신상</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=sale">할인상품</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/shop?category=preorder">예약판매</a>
+            <a class="nav-link">&raquo; 귀여움</a>
         </li>
         <br>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/enquiry">문의사항</a>
+            <a class="nav-link">베스트</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/notice">공지사항</a>
+            <a class="nav-link">신상</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/MoraeTDAT/contact">ContactUs</a>
+            <a class="nav-link">할인상품</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">예약판매</a>
         </li>
         <br>
         <li class="nav-item">
-            <a class="nav-link mb-3" href="/MoraeTDAT/morae">About모래</a>
+            <a class="nav-link">문의사항</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">공지사항</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">ContactUs</a>
+        </li>
+        <br>
+        <li class="nav-item">
+            <a class="nav-link mb-3">About모래</a>
         </li>
     </ul>
 </div>
@@ -73,23 +73,6 @@
     <div class="row">
         <div class="col-8">
             <a href="home"><img src="/img/logo.png" alt="logo" class="mx-auto img-fluid"></a>
-        </div>
-        <div class="col-2 mb-4 p-0" id="userInfo">
-            <div class="mt-4 d-flex justify-content-center">
-                <img src="/img/user.png" alt="userInfo" height="30px" width="30px">
-                <p style="margin-left: 5px;">userId</p>
-            </div>
-            <div>
-                <div class="d-flex  justify-content-center">
-                    <a class="userThing" href="/MoraeTDAT/login" id="login"><p>로그인</p></a>
-                    <a class="userThing" href="/MoraeTDAT/logout" id="logout" style="display: none"><p>로그아웃</p></a>
-                    <a class="userThing" href="/MoraeTDAT/register" style="margin-left: 30px;"><p>회원가입</p></a>
-                </div>
-                <div class="mb-2 text-center">
-                    <a href="/MoraeTDAT/shop/cartpage"><img src="/img/cart.png" class="cart" alt="cart" style="width:35px; margin-right: 15px;"></a>
-                    <a href="/MoraeTDAT/shop/heartpage"><img src="/img/heart.png" class="heart ms-3" alt="heart" style="width:35px"></a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -99,15 +82,15 @@
             <div class="row">
                 <p class="text-center fs-2 mt-2">관리자 페이지</p>
             </div>
-            <form class="row mt-3" action="/adminlogin" method="post">
+            <form class="row mt-3" action="/MoraeTDAT/admin/login-process" method="post" name="adminLogin">
                 <div class="col-12 mx-auto mb-2">
                     <div class="input-group w-50 mx-auto mb-2">
                         <label class="input-group-text" for="username" style="width : 50px">ID</label>
-                        <input type="text" class="form-control" id="username" name="username"/>
+                        <input type="text" class="form-control" id="username" name="adminID"/>
                     </div>
                     <div class="input-group w-50 mx-auto mb-2">
                         <label class="input-group-text" for="password" style="width : 50px">PW</label>
-                        <input type="password" class="form-control" id="password" name="password"/>
+                        <input type="password" class="form-control" id="password" name="adminPW"/>
                     </div>
                     <div class="input-group w-50 mx-auto mt-4">
                         <button type="submit" class="w-100 btn btn-primary">로그인</button>

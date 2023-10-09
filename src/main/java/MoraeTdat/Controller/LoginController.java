@@ -55,6 +55,56 @@ public class LoginController {
         return login;
     }
 
+    @RequestMapping(value="/find-id", method= RequestMethod.GET)
+    public ModelAndView findID(ModelAndView mav) {
+        mav.setViewName("findID");
+        return mav;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/finding", method= RequestMethod.POST)
+    public Map<String,Object> finding(ModelAndView mav, @RequestBody Map<String,Object> findData) {
+
+        Map<String,Object>finding = new HashMap<>();
+
+        String useremail = (String)findData.get("email");
+        String userphone = (String)findData.get("phone");
+
+        String userid = "";
+
+        if(userService.findUserByEmailPhone(useremail,userphone) != null) {
+            userid = userService.findUserByEmailPhone(useremail, userphone).getUserid();
+        }
+
+        finding.put("userid",userid);
+
+        return finding;
+    }
+
+    @RequestMapping(value="/find-pw", method= RequestMethod.GET)
+    public ModelAndView findPW(ModelAndView mav) {
+        mav.setViewName("findPW");
+        return mav;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/findingPW", method= RequestMethod.POST)
+    public Map<String,Object> findingPW(ModelAndView mav, @RequestBody Map<String,Object> findData) {
+
+        Map<String,Object>finding = new HashMap<>();
+
+        String userid = (String)findData.get("userid");
+        String userphone = (String)findData.get("userphone");
+        String userpw = "";
+
+        if(userService.findUserById(userid) != null) {
+            userpw = userService.findUserById(userid).getUserpw();
+        }
+
+        finding.put("userpw",userpw);
+
+        return finding;
+    }
 
 
 }

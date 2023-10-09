@@ -78,4 +78,8 @@ public class ShopService {
 
     public List<Product> getNewList(){return productRepository.getNewList();}
 
+    public List<Product> orderHitList(String category){return productRepository.orderHitList(category);}
+
+    public List<Product> orderLowpriceList(String category){return productRepository.orderLowpriceList(category);}
+
 }

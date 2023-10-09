@@ -1,3 +1,6 @@
+<%@ page import="MoraeTdat.data.Entity.Inquiry" %>
+<%@ page import="MoraeTdat.data.Entity.Notice" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -13,15 +16,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <!-- 제이쿼리 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- 네비바 css -->
     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <!-- 헤더 css -->
     <link rel="stylesheet" type="text/css" href="/css/header.css">
     <!-- 전체 css -->
     <link rel="stylesheet" type="text/css" href="/css/whole.css">
-    <script type="text/javascript" src="/js/inquiry.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/board.css">
+
     <title>MoraeTDAT</title>
 </head>
 <body>
@@ -30,8 +32,8 @@
         let showID = '${sessionScope.loginID}';
 
         if(showID === "" || showID === 'null'){
-            alert("로그인 후 이용 가능합니다.");
-            window.history.back();
+            $('#showUserId').text("비회원");
+            $('#login').show();
         } else {
             $('#showUserId').text(showID);
             $('#login').hide();
@@ -111,54 +113,59 @@
         </div>
     </div>
 </div>
-<!-- 컨텐츠 -->
-<div class="container" id="content" style="margin-top: 50px; background-color: #fcfcfc;">
-    <div class="container">
-        <div class="row">
-            <div class="col border d-flex p-3 justify-content-center">
-                <p class="fs-5 ms-2 me-5 my-auto">제목</p>
-                <input type="text" id="title" style="border: 1px solid #e2e2e2; width:70%;
-                    max-width: 800px;">
+    <!-- 컨텐츠 -->
+    <div class="container" id="content" style="margin-top: 50px; background-color: #fcfcfc;">
+        <div id="real_content">
+            <div id="title" class="mt-3 mb-3">
+                <p>공지사항</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col border-start border-end p-3 d-flex justify-content-center" style="width:90%; height:570px">
-                <input type="textarea" id="naeyong" style="border: 1px solid #e2e2e2; width:90%;
-                    max-width: 1300px; height:500px" class="mt-3">
+            <div id="board" class="mt-5">
+                <div id="column">
+                    <div id="col_num">
+                        <p>번호</p>
+                    </div>
+                    <div id="col_title">
+                        <p>제목</p>
+                    </div>
+                    <div id="col_id">
+                        <p>아이디</p>
+                    </div>
+                    <div id="col_date">
+                        <p>게시일</p>
+                    </div>
+                </div>
+                <%
+                    List<Notice> noticelist = (List<Notice>)request.getAttribute("noticelist");
+                    for(Notice notice : noticelist){
+                %>
+                <!-- 문의사항 게시글 출력 -->
+                <div id="row">
+                    <div id="row_num">
+                        <p><%=notice.getNoticenum()%></p>
+                    </div>
+                    <a href="/MoraeTDAT/notice/view?noticenum=<%=notice.getNoticenum()%>">
+                        <div id="row_title">
+                            <p><%=notice.getTitle()%></p>
+                        </div>
+                    </a>
+                    <div id="row_id">
+                        <p>관리자</p>
+                    </div>
+                    <div id="row_date">
+                        <p><%=notice.getRegidate()%></p>
+                    </div>
+                </div>
+                <%
+                    }
+                %>
+            <!-- 문의사항 게시글 출력 -->
             </div>
-        </div>
-        <div class="row d-flex justify-content-center border-start border-end border-bottom pb-4">
-            <button class="btn btn-secondary col-5" onclick="inquiryWrite()">문의남기기</button>
+            <div id="paging_container" class="mt-5">
+                <div id="pc_sear_cont">
+                    <input type="text" id="search" placeholder="  검색"/>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
-<!-- 푸터 -->
-<div class="footer" style="position: absolute; top : 1000px; left :335px;">
-    <hr>
-    <div class="container d-flex align-items-center mt-5">
-        <div class="col">
-            <img src="/img/logo.png" alt="Logo" class="img-fluid">
-        </div>
-        <div class="col">
-            <div class="container text-start ms-5">
-                <p>&copy; 모래모레 All rights reserved.<br>
-                    주소 : 경남 남해군 상주면 상주로 17-4 벤치오피스 2층<br>
-                    대표 : 강소희 &nbsp;&nbsp;| &nbsp;&nbsp;사업자등록번호 : 2021-1009<br>
-                    제휴협력문의 : raysonkingdom@gmail.com
-                </p>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container text-start ms-5">
-                <p><b>고객센터</b><br><br>
-                    전화번호 : 055-2021-1009<br>
-                    주말, 공휴일은 모래 복지를 위해 운영하지 않습니다.<br>
-                    <img src="/img/kakao-talk.png" class="img-fluid" style="width: 20px; margin-right:5px;">카카오채널 : MoraeTDAT
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

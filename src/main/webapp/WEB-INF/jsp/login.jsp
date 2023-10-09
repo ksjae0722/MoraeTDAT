@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-center mx-auto">
-                    <a href="signup">회원가입</a><p>&nbsp;|&nbsp;</p><a onclick="find_id_popup();">아이디 찾기</a><p>&nbsp;|&nbsp;</p><a href="find_pw">비밀번호 찾기</a>
+                    <a href="/MoraeTDAT/register">회원가입</a><p>&nbsp;|&nbsp;</p><a onclick="find_id_popup();" style="cursor:pointer;">아이디 찾기</a><p>&nbsp;|&nbsp;</p><a onclick="find_pw_popup()" style="cursor:pointer;">비밀번호 찾기</a>
                 </div>
             </form>
         </div>

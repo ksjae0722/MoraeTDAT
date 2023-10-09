@@ -29,11 +29,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     void addCartByProductnum(@Param("productnum") int productnum, @Param("productname") String productname, @Param("productprice") int productprice,
                              @Param("productoption") String productoption, @Param("userid") String userid,@Param("amount") int amount, @Param("mainphoto") String mainphoto);
 
-//    @Transactional
-//    @Modifying
-//    @Query(value="INSERT INTO cart (productnum, productname, productprice, userid, cartdate, amount) values (:productnum, :productname, :productprice, :userid, now(),amount+1)", nativeQuery = true)
-//    void addCartByProductnumAtList(@Param("productnum") int productnum, @Param("productname") String productname, @Param("productprice") int productprice, @Param("userid") String userid);
-
     @Transactional
     @Modifying
     @Query(value="INSERT INTO heart (productnum, productname, productprice, userid, mainphoto) values (:productnum, :productname, :productprice, :userid, :mainphoto)", nativeQuery = true)
@@ -68,5 +63,11 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query(value="SELECT * from product order by regidate desc LIMIT 9", nativeQuery = true)
     List<Product> getNewList();
+
+    @Query(value="SELECT * from product where category=? order by panmae desc", nativeQuery = true)
+    List<Product> orderHitList(String category);
+
+    @Query(value="SELECT * from product where category=? order by productprice", nativeQuery = true)
+    List<Product> orderLowpriceList(String category);
 
 }

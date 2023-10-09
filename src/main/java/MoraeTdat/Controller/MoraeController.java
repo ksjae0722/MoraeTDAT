@@ -51,56 +51,19 @@ public class MoraeController {
 		return "mypage";
 	}
 	
-	//네비바 메뉴
-	@GetMapping("/category")
-	public String category(@RequestParam String gubun,
-						   @SessionAttribute Model m) {
-		
-		m.addAttribute("gubun",gubun);
-		return "shop";
-	}
-	
-	//상품 상세 화면
-	@GetMapping("/shopdetail")
-	public String shopdetail() {
-		
-		return "shopdetail";
-	}
-	
-	//결제 화면
-	@GetMapping("/checkout")
-	public String checkout() {
-		
-		return "checkout";
-	}
-	
-	//주문 내역 화면
-	@GetMapping("/orderdetail")
-	public String orderdetail() {
-		
-		return "orderdetail";
-	}
-	
-	//찜 목록 화면
-	@GetMapping("/heartlist")
-	public String heartlist() {
-		
-		return "heartlist";
-	}
-	
-	//찜 목록 화면
+
+	//모래 화면
 	@GetMapping ("/morae")
 	public String aboutMorae() {
 		
 		return "AboutMorae";
 	}
 
+	//모래 화면
+	@GetMapping ("/contact")
+	public String contact() {
 
-
-	//공지사항
-	@GetMapping ("/notice")
-	public String notice() {
-
-		return "notice";
+		return "contactus";
 	}
+
 }

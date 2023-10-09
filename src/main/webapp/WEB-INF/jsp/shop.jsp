@@ -143,8 +143,8 @@
                         정렬
                     </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">인기순</a></li>
-                        <li><a class="dropdown-item" href="#">최저가순</a></li>
+                        <li class="dropdown-item" onclick="orderhit('<%=category%>')">인기순</li>
+                        <li class="dropdown-item" onclick="orderlowprice('<%=category%>')">최저가순</li>
                       </ul>
                 </div>
             </div>
@@ -152,16 +152,22 @@
                 List<Product> productList = new ArrayList<>();
                 List<Product> allList = (List<Product>) request.getAttribute("productList");
                 List<Product> resultList = (List<Product>)request.getAttribute("resultList");
+                List<Product> orderList = (List<Product>)request.getAttribute("orderList");
+
                 String pandan = "";
                 if(resultList != null){
                     productList = resultList;
                     pandan = "검색결과";
+                } else if(orderList != null){
+                    productList = orderList;
+                    pandan = "필터링";
                 } else {
                     productList = allList;
                     pandan = "그냥 출력";
                 }
+
             %>
-            <div class="row mt-5 pb-5 gap-5 border pt-5 justify-content-center">
+            <div class="row mt-5 pb-5 gap-5 border pt-5 justify-content-center" id="sangpum">
                 <!-- 상품 출력 1-->
                 <%
                     String loginID = (String)session.getAttribute("loginID");

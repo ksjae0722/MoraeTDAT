@@ -1,11 +1,3 @@
-function find_id_popup() {
-    let popupX = window.screen.width / 2 - 300;
-    let popupY = window.screen.height / 2 - 350;console.log(winWidth, winHeight);
-    let option = 'width=600, height=700, top='+popupY+', left='+popupX+', location=no';
-    window.open("http://127.0.0.1:5500/find-id.html", "MoraeTDAT", option); //url 변경
-}
-
-
 
 function register() {
 

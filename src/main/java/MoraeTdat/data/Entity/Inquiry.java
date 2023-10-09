@@ -19,7 +19,7 @@ public class Inquiry {
     private int inquirynum;
 
     @Column(nullable = false)
-    private Date regiDate;
+    private Date regidate;
 
     @Column(nullable = false)
     private String title;
@@ -27,10 +27,16 @@ public class Inquiry {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private String userid;
+
+    @Column
     private Date answerdate;
 
+    @Column
     private String answertitle;
 
+    @Column
     private String answercontent;
 
 }

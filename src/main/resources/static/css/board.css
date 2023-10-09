@@ -71,9 +71,7 @@
 #content #board #row {
     border-left : 1px solid;
     border-right : 1px solid;
-    border-bottom : 1px solid;
     width : 1120px;
-    height : 400px;
     display : flex;
     justify-content : space-between;
 }

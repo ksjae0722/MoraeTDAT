@@ -164,5 +164,21 @@ public class ShopController {
         return mav;
     }
 
+    @RequestMapping(value="/order", method = RequestMethod.GET )
+    public ModelAndView order(ModelAndView mav,
+                              @RequestParam String category,
+                              @RequestParam String gijun){
+        List<Product> orderList = new ArrayList<>();
+
+        if(gijun.equals("popular")){
+            orderList = shopService.orderHitList(category);
+        } else if(gijun.equals("lowprice")){
+            orderList = shopService.orderLowpriceList(category);
+        }
+
+        mav.addObject("orderList", orderList);
+        mav.setViewName("shop");
+        return mav;
+    }
 
 }

@@ -84,6 +84,14 @@ $(function (){
             searchByKeyword($('#category').text());
         }
     })
+
+    let category = $('#category').text();
+
+    if(category == '검색결과' || category == '베스트' || category == '신상'
+        || category == '할인상품' || category == '예약판매'){
+        $('#shop_align').hide();
+    }
+
 })
 
 function gaesuDown(){
@@ -155,4 +163,20 @@ function part_deleteH(e){
             location.reload();
         }
     });
+}
+
+function orderhit(c){
+
+    let category = c;
+    let gijun= "popular" ;
+
+    window.location.href = '/MoraeTDAT/shop/order?category='+c+'&gijun='+gijun;
+}
+
+function orderlowprice(c){
+
+    let category = c;
+    let gijun = "lowprice";
+
+    window.location.href = '/MoraeTDAT/shop/order?category='+c+'&gijun='+gijun;
 }

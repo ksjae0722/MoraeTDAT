@@ -1,3 +1,5 @@
+<%@ page import="MoraeTdat.data.Entity.Inquiry" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -131,20 +133,29 @@
                     <p>게시일</p>
                 </div>
             </div>
+            <%
+                List<Inquiry> userlist = (List<Inquiry>)request.getAttribute("userlist");
+                for(Inquiry uinquiry : userlist){
+            %>
             <div id="row">
                 <div id="row_num">
-                    <p>1</p>
+                    <p><%=uinquiry.getInquirynum()%></p>
                 </div>
-                <div id="row_title">
-                    <p>제목</p>
-                </div>
+                <a href="/MoraeTDAT/inquiry/view?inquirynum=<%=uinquiry.getInquirynum()%>">
+                    <div id="row_title">
+                        <p><%=uinquiry.getTitle()%></p>
+                    </div>
+                </a>
                 <div id="row_id">
-                    <p>아이디</p>
+                    <p><%=uinquiry.getUserid()%></p>
                 </div>
                 <div id="row_date">
-                    <p>게시일</p>
+                    <p><%=uinquiry.getRegidate()%></p>
                 </div>
             </div>
+            <%
+                }
+            %>
         </div>
         <div id="paging_container" class="mt-5">
             <div id="pc_sear_cont">
